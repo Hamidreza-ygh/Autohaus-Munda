@@ -20,7 +20,7 @@
       </button>
     </h2>
     <div v-if="displayCollapse" class="transition-all duration-1000">
-      <div v-for="(item, index) in content" :key="index" class="flex justify-center py-4 px-48">
+      <div v-for="(item, index) in content" :key="index" class="flex justify-center md:py-4 md:px-48 py-2 px-5">
         <p class="basis-1/2 text-left mt-1 text-sm text-gray-800">{{item.title}} :</p>
         <p class="basis-1/2 text-left mt-1 text-sm text-gray-400">{{item.value}}</p>
       </div>
