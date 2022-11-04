@@ -7,7 +7,7 @@ export default createStore({
       { name: 'Unsere Fahrzeuge', routerName: 'home', current: true },
       { name: 'Service', href: '#', current: false },
       { name: 'Anfrage', routerName: 'request', current: false },
-      { name: 'Angebot', href: '#', current: false },
+      // { name: 'Angebot', href: '#', current: false },
       { name: 'Tipps', href: '#', current: false },
       { name: 'Kontakt', routerName: 'contact', current: false },
     ],
