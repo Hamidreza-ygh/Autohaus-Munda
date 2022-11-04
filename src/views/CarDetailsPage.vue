@@ -240,6 +240,16 @@ let mainTitle = [
     created() {
       // console.log(this.$store.state.carsObject)
       this.car = this.$store.state.carsObject[this.carId][0];
+      // const getImages = async () => {
+      //   try {
+      //     const res = await CarService.getDetailCars(this.carId);
+      //     console.log('resIst', res);
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // };
+      // getImages();
+    
       CarService.getDetailCars(this.carId)
         .then((response) => {
           console.log(response);

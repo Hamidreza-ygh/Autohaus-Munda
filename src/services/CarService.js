@@ -15,7 +15,17 @@ export default {
   getCars() {
     return apiClient.get("/" + dealerId);
   },
+  // getDetailCars(carId) {
+  //   return apiClient.get("/" + carId);
+  // },
   async getDetailCars(carId) {
-    return await apiClient.get("/" + carId);
+    try {
+      const res = await apiClient.get("/" + carId);
+      console.log('resIst', res);
+      return res;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   },
 };
