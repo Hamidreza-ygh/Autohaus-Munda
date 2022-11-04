@@ -7,18 +7,17 @@
     <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
       <div>
         <p class="text-sm text-gray-700">
-          Showing
           <span class="font-medium">{{ pager.startIndex+1}}</span>
           {{ ' ' }}
-          to
+          bis
           {{ ' ' }}
           <span class="font-medium">{{ pager.endIndex }}</span>
           {{ ' ' }}
-          of
+          von
           {{ ' ' }}
           <span class="font-medium">{{ items.length }}</span>
           {{ ' ' }}
-          results
+          Ergebnissen
         </p>
       </div>
       <div>

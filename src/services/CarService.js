@@ -15,7 +15,7 @@ export default {
   getCars() {
     return apiClient.get("/" + dealerId);
   },
-  getDetailCars(carId) {
-    return apiClient.get("/" + carId);
+  async getDetailCars(carId) {
+    return await apiClient.get("/" + carId);
   },
 };

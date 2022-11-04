@@ -39,37 +39,24 @@
           </li>
         </ol>
       </nav>
-
-      <!-- Image gallery -->
-      <div class="grid grid-cols-1 gap-y-10 gap-x-6 px-4 sm:grid-cols-1 sm:px-10 lg:grid-cols-1 lg:px-20 xl:gap-x-8">
-        <SlideComponent :data="car.images" :index="currentIndex" class=" mt-20" ></SlideComponent>
-      </div>
-      <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-20">
-        <!-- <div class="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-          <img :src="product.images[0].src" :alt="product.images[0].alt" class="h-full w-full object-cover object-center" />
-        </div> -->
-        <div class="hidden lg:grid lg:grid-cols-12 lg:gap-y-8 lg:gap-x-4">
-          <div v-for="(item, index) in car.images" :key="index" @click="changeSlide(index)" class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg cursor-pointer">
-            <img :src="item.imageSrc" :alt="item.alt" class="h-full w-full object-cover object-center" />
-          </div>
-          <!-- <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-            <img :src="product.images[2].imageSrc" :alt="product.images[2].alt" class="h-full w-full object-cover object-center" />
-          </div> -->
-        </div>
-        <!-- <div class="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
-          <img :src="product.images[3].src" :alt="product.images[3].alt" class="h-full w-full object-cover object-center" />
-        </div> -->
-      </div>
       <!-- Product info -->
       <div class="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-20">
+        <!-- Image gallery -->
         <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-          <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ fullName }}</h1>
+          <SlideComponent :data="car.images" :index="currentIndex" class="bg-gray-100" ></SlideComponent>
+          <div class="hidden h-28 px-6 mt-2 items-center bg-gray-100 overflow-x-auto lg:flex lg:flex-nowrap lg:gap-y-8 lg:gap-x-4">
+            <div v-for="(item, index) in car.images" :key="index" @click="changeSlide(index)" class="aspect-w-3 aspect-h-2 flex-none w-32 rounded-lg cursor-pointer">
+              <img :src="item.imageSrc" :alt="item.alt" class=" object-contain object-center" />
+            </div>
+          </div>
         </div>
-
         <!-- Options -->
         <div class="mt-4 lg:row-span-3 lg:mt-0 flex flex-col divide-y content-center">
           <div class="flex justify-between pb-5">
-            <p class="text-3xl tracking-tight text-gray-900">€ {{ car.PriceSelling }}</p>
+            <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ fullName }}</h1>
+          </div>
+          <div class="flex justify-between py-5">
+            <p class="text-3xl tracking-tight text-gray-900">€ {{ priceShowing(car.PriceSelling) }}</p>
           </div>
           <div>
             <a class="flex justify-between py-10" href="https://durchblicker.at/autokredit?utm_source=as24&utm_medium=cpc&utm_campaign=tlbkredit1&value=11900">
@@ -95,12 +82,31 @@
               </button>
             </div>
           </div>
-          <div v-if="car" class="grid grid-cols-2 grid-rows-2 gap-2 sm:gap-4 py-40 lg:gap-4 lg:py-40 hidden md:grid">
+          <!-- Image gallery -->
+          <!-- <div v-if="car" class="grid grid-cols-2 grid-rows-2 gap-2 sm:gap-4 py-40 lg:gap-4 lg:py-40 hidden md:grid">
             <img v-for="(item, index) in sliced(car.images)" :key="index" :src="item.imageSrc" :alt="item.alt" class="h-full w-full object-cover object-center rounded-lg bg-gray-100" />
-          </div>
+          </div> -->
         </div>
         <!-- Description and details -->
         <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
+          <div>
+            <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-20">
+              <!-- <div class="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
+                <img :src="product.images[0].src" :alt="product.images[0].alt" class="h-full w-full object-cover object-center" />
+              </div> -->
+              <div class="hidden lg:grid lg:grid-cols-12 lg:gap-y-8 lg:gap-x-4">
+                <!-- <div v-for="(item, index) in car.images" :key="index" @click="changeSlide(index)" class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg cursor-pointer">
+                  <img :src="item.imageSrc" :alt="item.alt" class=" object-contain object-center" />
+                </div> -->
+                <!-- <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+                  <img :src="product.images[2].imageSrc" :alt="product.images[2].alt" class="h-full w-full object-cover object-center" />
+                </div> -->
+              </div>
+              <!-- <div class="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
+                <img :src="product.images[3].src" :alt="product.images[3].alt" class="h-full w-full object-cover object-center" />
+              </div> -->
+            </div>
+          </div>
           <div class="mt-10">
             <AccordionComponent v-for="(title,index) in mainTitle" :key="index" :title="title.title" :content="title.content" :show="title.show" :icon="title.icon"></AccordionComponent>
           </div>
@@ -140,17 +146,6 @@
     </div>
     <!-- Information in details -->
     <!-- <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-y-16 gap-x-8 py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
-      <div>
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Technical Specifications</h2>
-        <p class="mt-4 text-gray-500">The walnut wood card tray is precision milled to perfectly fit a stack of Focus cards. The powder coated steel divider separates active cards from new ones, or can be used to archive important task lists.</p>
-
-        <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
-          <div v-for="feature in features" :key="feature.name" class="border-t border-gray-200 pt-4">
-            <dt class="font-medium text-gray-900">{{ feature.name }}</dt>
-            <dd class="mt-2 text-sm text-gray-500">{{ feature.description }}</dd>
-          </div>
-        </dl>
-      </div>
       <div v-if="car" class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
         <img v-for="(item, index) in sliced(car.images)" :key="index" :src="item.imageSrc" :alt="item.alt" class="h-full w-full object-cover object-center rounded-lg bg-gray-100" />
       </div>
@@ -419,7 +414,12 @@ let mainTitle = [
         if(images){
           return images.slice(images.length-4, images.length);
         }
-      }
+      },
+      priceShowing(price){
+        let price_st = price.toString();
+        let newPrice = price_st.slice(0, -3) + '.' + price_st.slice(-3);
+        return newPrice;
+      },
     },
     computed: {
       fullName () {
