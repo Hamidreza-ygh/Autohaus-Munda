@@ -256,10 +256,10 @@ let mainTitle = [
           let outList = [];
           response.data.Cars[0].Images.forEach(i => {
             let innerMap = {};
-            innerMap['imageSrc'] = i
-            outList.push(innerMap)
+            innerMap['imageSrc'] = i;
+            outList.push(innerMap);
           });
-          this.car['images'] = outList
+          this.car['images'] = outList;
         })
         .catch((error) => {
           console.log(error);
@@ -410,15 +410,16 @@ let mainTitle = [
             value:'12 Monaten'
           },
         ],
-      ]
+      ];
 
       this.mainTitle.forEach( (el, i) => {
         el['content'] = content[i];
       });
+
     },
     methods: {
       changeSlide (index) {
-        this.currentIndex = index
+        this.currentIndex = index;
       },
       sliced(images) {
         if(images){
@@ -433,7 +434,7 @@ let mainTitle = [
     },
     computed: {
       fullName () {
-        return this.car.Make + ' ' + this.car.Model + ' ' + this.car.Submodel
+        return this.car.Make + ' ' + this.car.Model + ' ' + this.car.Submodel;
       }
     }
   }
