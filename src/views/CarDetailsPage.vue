@@ -252,7 +252,7 @@ let mainTitle = [
     
       CarService.getDetailCars(this.carId)
         .then((response) => {
-          console.log(response);
+          console.log('1', response);
           let outList = [];
           response.data.Cars[0].Images.forEach(i => {
             let innerMap = {};
@@ -411,7 +411,7 @@ let mainTitle = [
           },
         ],
       ];
-
+      console.log('2', this.mainTitle);
       this.mainTitle.forEach( (el, i) => {
         el['content'] = content[i];
       });
