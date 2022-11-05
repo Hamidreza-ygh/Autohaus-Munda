@@ -25,14 +25,14 @@
       </div>
     </div> -->
     <div class="mt-4 flex-col justify-between">
-      <div class="flex flex-row gap-x-8 justify-between">
-        <h3 class="order-first basis-3/4 self-start text-sm text-gray-700 h-16 dark:text-small-dark">
+      <div class="flex flex-row gap-x-8 sm:gap-x-2 md:gap-x-8 justify-between">
+        <h3 class="order-first basis-2/3 self-start text-sm text-gray-700 h-16 dark:text-small-dark">
           <router-link :to="{ name: 'carDetails', params: {carId: item.CarID} }">
             <span aria-hidden="true" class="absolute inset-0" />
             {{ carTitle(item) }}
           </router-link>
         </h3>
-        <div class="bg-red-600 px-1 h-[28px] basis-1/4 text-center rounded-md">
+        <div class="bg-red-600 px-1 h-[22px] md:h-[24px] basis-1/3 text-center rounded-md">
           <p class="text-sm lg:text-base font-bold text-white">€ {{ priceShowing(item.PriceSelling) }}</p>
         </div>
       </div>
