@@ -2,10 +2,10 @@
   
 <div  class="relative">
     <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-[480px]">
+    <div class="relative h-[320px] overflow-hidden rounded-lg sm:h-[480px]">
          <!-- Items -->
         <div v-for="(item, index) in data" :key="index" class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20" v-show="currentSlide === index" @mouseenter="stopSlideTimer" @mouseout="startSlideTimer">
-            <img :src="item.imageSrc" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img :src="item.imageSrc" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
     </div>
     <!-- Slider indicators -->
