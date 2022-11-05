@@ -44,9 +44,11 @@
         <!-- Image gallery -->
         <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
           <SlideComponent :data="car.images" :index="currentIndex" class="bg-gray-100" ></SlideComponent>
-          <div class="hidden h-28 px-6 mt-2 items-center bg-gray-100 overflow-x-auto lg:flex lg:flex-nowrap lg:gap-y-8 lg:gap-x-4">
-            <div v-for="(item, index) in car.images" :key="index" @click="changeSlide(index)" class="aspect-w-3 aspect-h-2 flex-none w-32 rounded-lg cursor-pointer">
-              <img :src="item.imageSrc" :alt="item.alt" class=" object-contain object-center" />
+          <div class="mt-2 bg-gray-100 overflow-x-auto items-center">
+            <div class="items-center flex flex-nowrap slider ease-out duration-500">
+              <div v-for="(item, index) in car.images" :key="index" @click="changeSlide(index)" class="aspect-w-3 aspect-h-2 flex-none w-32 rounded-lg cursor-pointer p-2">
+                <img :src="item.imageSrc" :alt="item.alt" class=" object-contain object-center" />
+              </div>
             </div>
           </div>
         </div>
@@ -446,6 +448,33 @@ let product = {
       fullName () {
         return this.car.Make + ' ' + this.car.Model + ' ' + this.car.Submodel;
       }
-    }
+    },
+    // watch: {
+    //   currentIndex(newCurrentIndex, oldCurrentIndex) {
+    //     console.log('newCurrentIndex', newCurrentIndex);
+    //     console.log('oldCurrentIndex', oldCurrentIndex);
+    //     let newTranslateX = 0;
+    //     if(newCurrentIndex > oldCurrentIndex){
+    //       newTranslateX = newCurrentIndex*(-128) - 64;
+    //     }
+    //     else {
+    //       newTranslateX = (oldCurrentIndex-newCurrentIndex)*(-128) - 64;
+    //     }
+    //     // var newTranslateX = newCurrentIndex*(-128) - 64;
+    //     let ele = document.querySelector(".slider");
+    //     console.log('newTranslateX', newTranslateX);
+    //     var totalDis = (this.car.images.length-1)*(-128) - 64;
+    //     var viewDis = (this.car.images.length-6)*(-128) - 64;
+    //     console.log('totalDis', totalDis)
+    //     // let ele = document.querySelector(".slider");
+    //     // ele.style.transform = "translateX(" + (newTranslateX) + "px)";
+    //     if (newTranslateX > viewDis){
+    //       ele.style.transform = "translateX(" + (newTranslateX) + "px)";
+    //     }
+    //     else if (newTranslateX === totalDis) {
+    //       ele.style.transform = "translateX(" + (-16) + "px)";
+    //     }
+    //   }
+    // }
   }
 </script>

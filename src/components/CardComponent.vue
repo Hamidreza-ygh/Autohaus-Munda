@@ -3,7 +3,7 @@
     <div class="aspect-w-1 aspect-h-1 h-80 w-full flex flex-col justify-center overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none">
       <img :src="item.Image1[0].imageSrc" alt="" class="min-h-80 aspect-w-1 aspect-h-1" />
     </div>
-    <div class="mt-4 flex justify-between">
+    <div class="mt-4 flex justify-between gap-x-3">
       <div class="basis-3/4 flex flex-col justify-end">
         <h3 class="text-sm text-gray-700 h-16">
           <router-link :to="{ name: 'carDetails', params: {carId: item.CarID} }">
@@ -18,8 +18,10 @@
           <p class="mt-1 text-sm text-gray-500">{{ item.FuelType }}</p>
         </div>
       </div>
-      <div class="basis-1/4 flex justify-end">
-        <p class="text-sm font-medium text-gray-900">€ {{ priceShowing(item.PriceSelling) }}</p>
+      <div class="basis-1/4 flex flex-col justify-start">
+        <div class="basis-1/4 order-first bg-red-600 px-1 rounded-md">
+          <p class="text-sm lg:text-base font-bold text-white">€ {{ priceShowing(item.PriceSelling) }}</p>
+        </div>
       </div>
     </div>
   </div>

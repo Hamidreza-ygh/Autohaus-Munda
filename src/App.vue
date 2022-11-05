@@ -5,9 +5,10 @@
       <Suspense>
         <!-- component with nested async dependencies -->
         <template #default>
-          <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+          <router-view/>
+          <!-- <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             <router-view/>
-          </div>
+          </div> -->
         </template>
         <!-- loading state via #fallback slot -->
         <template #fallback>
