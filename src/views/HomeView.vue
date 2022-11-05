@@ -1,6 +1,6 @@
 <template>
   <div class="bg-red-600 rounded-b-[100px]">
-    <div class="z-10 h-[520px] bg-fixed bg-right bg-no-repeat flex flex-row rounded-b-[100px] w-auto" style="background-image: url('@/assets/header-img.png')">
+    <div class="z-10 h-[520px] bg-fixed bg-right bg-no-repeat flex flex-row rounded-b-[100px] w-auto" style="background-image: url('../assets/header-img.png')">
       <div class="flex flex-col lg:ml-36 lg:py-16 md:basis-1/2 gap-y-8 px-4">
         <h1 class="">Ihr kompetenter Partner!</h1>
         <h2>Möchten Sie Ihr Auto schnell, unkompliziert und zu einem fairen Preis verkaufen?</h2>
