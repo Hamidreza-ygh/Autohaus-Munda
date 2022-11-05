@@ -1,6 +1,6 @@
 <template>
   <div class="bg-red-600 rounded-b-[100px]">
-    <div class="z-10 h-[380px] sm:h-[420px] md:h-[520px] bg-fixed bg-contain bg-[right_16rem] sm:bg-[right_bottom_22rem] lg:bg-right bg-no-repeat flex flex-row rounded-b-[100px]" style="background-image: url('https://www.autohaus-munda.at/images/header-img.png')">
+    <div class="z-10 h-[380px] sm:h-[420px] md:h-[520px] bg-fixed bg-contain bg-[right_16rem] sm:bg-[right_bottom_0rem] lg:bg-right bg-no-repeat flex flex-row rounded-b-[100px]" style="background-image: url('https://www.autohaus-munda.at/images/header-img.png')">
       <div class="flex flex-col lg:ml-36 lg:py-8 md:basis-1/3 gap-y-8 px-4">
         <h1 class="">Ihr kompetenter Partner!</h1>
         <h2>Möchten Sie Ihr Auto schnell, unkompliziert und zu einem fairen Preis verkaufen?</h2>
