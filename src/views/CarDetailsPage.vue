@@ -22,13 +22,13 @@
   ```
 -->
 <template>
-  <div class="bg-white dark:bg-gray-900">
+  <div class="bg-white">
     <div class="pt-6">
       <nav aria-label="Breadcrumb">
         <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <li v-for="breadcrumb in product.breadcrumbs" :key="breadcrumb.id">
             <div class="flex items-center">
-              <router-link :to="{ name: breadcrumb.routerName }" class="mr-2 text-sm font-medium text-gray-900">{{ breadcrumb.name }}</router-link>
+              <router-link :to="{ name: breadcrumb.routerName }" class="mr-2 text-sm font-medium text-gray-900 dark:text-gray-400">{{ breadcrumb.name }}</router-link>
               <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-5 w-4 text-gray-300">
                 <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
               </svg>
@@ -43,8 +43,8 @@
       <div class="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-20">
         <!-- Image gallery -->
         <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-          <SlideComponent :data="car.images" :index="currentIndex" class="bg-gray-100" ></SlideComponent>
-          <div class="mt-2 bg-gray-100 overflow-x-auto items-center">
+          <SlideComponent :data="car.images" :index="currentIndex" class="bg-gray-50 rounded-md" ></SlideComponent>
+          <div class="mt-2 bg-gray-50 overflow-x-auto items-center">
             <div class="items-center flex flex-nowrap slider ease-out duration-500">
               <div v-for="(item, index) in car.images" :key="index" @click="changeSlide(index)" class="aspect-w-3 aspect-h-2 flex-none w-32 rounded-lg cursor-pointer p-2">
                 <img :src="item.imageSrc" :alt="item.alt" class=" object-contain object-center" />
@@ -91,25 +91,7 @@
         </div>
         <!-- Description and details -->
         <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
-          <div>
-            <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-20">
-              <!-- <div class="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-                <img :src="product.images[0].src" :alt="product.images[0].alt" class="h-full w-full object-cover object-center" />
-              </div> -->
-              <div class="hidden lg:grid lg:grid-cols-12 lg:gap-y-8 lg:gap-x-4">
-                <!-- <div v-for="(item, index) in car.images" :key="index" @click="changeSlide(index)" class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg cursor-pointer">
-                  <img :src="item.imageSrc" :alt="item.alt" class=" object-contain object-center" />
-                </div> -->
-                <!-- <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                  <img :src="product.images[2].imageSrc" :alt="product.images[2].alt" class="h-full w-full object-cover object-center" />
-                </div> -->
-              </div>
-              <!-- <div class="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
-                <img :src="product.images[3].src" :alt="product.images[3].alt" class="h-full w-full object-cover object-center" />
-              </div> -->
-            </div>
-          </div>
-          <div class="mt-10">
+          <div class="mt-5">
             <AccordionComponent v-for="(title,index) in mainTitle" :key="index" :title="title.title" :content="title.content" :show="title.show" :icon="title.icon"></AccordionComponent>
           </div>
           <!-- <div>

@@ -17,5 +17,8 @@
     .text-primary {
         @apply font-sans text-base font-normal;
     }
+    .text-small-dark {
+        @apply font-sans text-sm font-normal text-gray-400;
+    }
     
   }
