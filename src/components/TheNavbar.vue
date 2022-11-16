@@ -5,7 +5,7 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <img class="h-12 w-150 rounded-md" src="../assets/ma_logo.jpeg" alt="Munda" />
+            <img class="h-12 w-150 rounded-md" src="../assets/munda_Logo.png" alt="Munda" />
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">

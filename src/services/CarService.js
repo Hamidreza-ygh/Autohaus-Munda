@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://carsys24.com:8881/api/GetCars",
+  baseURL: "https://carsys24.at:8881/api/GetCars",
   withCredentials: false,
   headers: {
     Accept: "application/json",
