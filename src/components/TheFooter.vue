@@ -1,13 +1,47 @@
 <template>
 <footer class="p-4 bg-gray-100 sm:p-6 dark:bg-gray-800">
-  <div class="md:flex md:justify-between">
-    <div class="mb-6 md:mb-0">
+  <div class="md:px-24 flex gap-4 justify-around md:flex-row flex-col text-center md:text-left">
+    <!-- <div class="mb-6 md:mb-0">
         <router-link :to="{ name: 'home' }" class="flex items-center">
             <img src="../assets/MundaLogo.png" class="mr-3 h-15" alt="FlowBite Logo">
-            <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Munda Auto Haus</span> -->
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Munda Auto Haus</span>
         </router-link>
+    </div> -->
+    <div class="basis-1/4">
+      <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+      <div class="md:grid md:grid-cols-2 md:gap-4">
+        <ul class="text-gray-600 dark:text-gray-400">
+          <li v-for="item in navigationDivider(2, 1)" :key="item.name" class="mb-4">
+            <router-link :to="{ name: item.routerName}">{{ item.name }}</router-link>
+          </li>
+        </ul>
+        <ul class="text-gray-600 dark:text-gray-400">
+          <li v-for="item in navigationDivider(2, 2)" :key="item.name" class="mb-4">
+            <router-link :to="{ name: item.routerName}">{{ item.name }}</router-link>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+    <div class="basis-1/4">
+      <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+      <ul class="text-gray-600 dark:text-gray-400">
+        <li class="mb-4">
+          <a href="#" class="hover:underline">Discord</a>
+        </li>
+      </ul>
+    </div>
+    <div class="basis-1/4">
+      <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+      <ul class="text-gray-600 dark:text-gray-400">
+        <li class="mb-4">
+            <a href="#" class="hover:underline">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+        </li>
+      </ul>
+    </div>
+    <!-- <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
       <div>
         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-12">
@@ -42,7 +76,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
   <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
   <div class="sm:flex sm:items-center sm:justify-between">
