@@ -37,11 +37,27 @@
         </div>
       </div>
       <div class="flex flex-col justify-start">
-        <div class="grid grid-cols-2 gap-x-32 sm:gap-x-16 md:gap-x-32 text-sm text-gray-500 dark:text-small-dark">
-          <p class="mt-1">{{ item.GearType }}</p>
-          <p class="mt-1">{{ item.HorsePowerKW }} kW ( {{ psConverter(item.HorsePowerKW )}} PS)</p>
-          <p class="mt-1">{{ item.Mileage }} km</p>
-          <p class="mt-1">{{ item.FuelType }}</p>
+        <div class="grid grid-cols-2 gap-x-20 sm:gap-x-4 md:gap-x-20 text-sm text-gray-500 dark:text-small-dark">
+          <div class="info_container">
+            <img v-if="darkMode" src="../assets/gearshift-dark.png" width="20">
+            <img v-else src="../assets/gearshift.png" width="20">
+            <p class="mt-1">{{ item.GearType }}</p>
+          </div>
+          <div class="info_container">
+            <img v-if="darkMode" src="../assets/speedometer-dark.png" width="20">
+            <img v-else src="../assets/speedometer.png" width="20">
+            <p class="mt-1">{{ item.HorsePowerKW }} kW ( {{ psConverter(item.HorsePowerKW )}} PS)</p>
+          </div>
+          <div class="info_container">
+            <img v-if="darkMode" src="../assets/road-dark.png" width="20">
+            <img v-else src="../assets/road.png" width="20">
+            <p class="mt-1">{{ item.Mileage }} km</p>
+          </div>
+          <div class="info_container">
+            <img v-if="darkMode" src="../assets/gas-station-dark.png" width="20">
+            <img v-else src="../assets/gas-station.png" width="20">
+            <p class="mt-1">{{ item.FuelType }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -53,6 +69,20 @@ export default {
   name: "CardComponent",
   props: {
     data: Array,
+  },
+  data () {
+    return {
+      darkMode: false,
+    };
+  },
+  mounted() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      this.darkMode = true;
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      this.darkMode = event.matches ? true : false;
+      console.log('darkMode', this.darkMode)
+    });
   },
   methods: {
     carTitle(item) {
@@ -71,8 +101,48 @@ export default {
     
   // }
 };
+// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+//     const darkMode = true;
+//     console.log('darkMode', darkMode);
+// }
+// else{
+//   const darkMode = false;
+//   console.log('darkMode', darkMode);
+// }
+// function setColorScheme(scheme) {
+//   let darkMode = false;
+//   switch(scheme){
+//     case 'dark':
+//       darkMode = true;
+//       break;
+//     case 'light':
+//       darkMode = false;
+//       break;
+//   }
+//   return darkMode;
+// }
+
+// function getPreferredColorScheme() {
+//   if (window.matchMedia) {
+//     if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+//       return 'dark';
+//     } else {
+//       return 'light';
+//     }
+//   }
+//   return 'light';
+// }
+
+// if(window.matchMedia){
+//   var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+//   colorSchemeQuery.addEventListener('change', setColorScheme(getPreferredColorScheme()));
+// }
 </script>
 
 <style scoped>
-
+.info_container {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: center;
+}
 </style>
