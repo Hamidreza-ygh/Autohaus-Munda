@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-gray-900">
+  <div class="pageLayout">
    <FormComponent></FormComponent>
   </div>
 </template>
