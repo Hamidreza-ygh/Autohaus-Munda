@@ -28,13 +28,13 @@
         <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <li v-for="breadcrumb in product.breadcrumbs" :key="breadcrumb.id">
             <div class="flex items-center">
-              <router-link :to="{ name: breadcrumb.routerName }" class="mr-2 text-sm font-medium text-gray-900 dark:text-gray-400">{{ breadcrumb.name }}</router-link>
+              <router-link :to="{ name: breadcrumb.routerName }" class="mr-2 text-base font-medium text-gray-900 dark:text-gray-400">{{ breadcrumb.name }}</router-link>
               <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-5 w-4 text-gray-300">
                 <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
               </svg>
             </div>
           </li>
-          <li class="text-sm">
+          <li class="text-base">
             <router-link :to="{ name: 'carDetails', params: {carId: carId} }" aria-current="page" class="font-medium text-gray-500 hover:text-gray-600">{{ fullName }}</router-link>
           </li>
         </ol>
@@ -304,11 +304,11 @@ let product = {
           },
           {
             title:'Erstzulassung',
-            value:this.car.FirstRegistrationDate
+            value:this.dateDivider(this.car.FirstRegistrationDate)
           },
           {
-            title:'HU',
-            value:this.car.NextInspectionDate
+            title:'Pickerl bis',
+            value:this.dateDivider(this.car.NextInspectionDate)
           },
           {
             title:'Scheckheftgepflegt',
@@ -437,6 +437,10 @@ let product = {
         let newPrice = price_st.slice(0, -3) + '.' + price_st.slice(-3);
         return newPrice;
       },
+      dateDivider(date){
+        let newDate = date.slice(3);
+        return newDate;
+      }
     },
     computed: {
       fullName () {

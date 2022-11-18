@@ -58,6 +58,16 @@
             <img v-else src="../assets/gas-station.png" width="20">
             <p class="mt-1">{{ item.FuelType }}</p>
           </div>
+          <div class="info_container">
+            <img v-if="darkMode" src="../assets/calendar-dark.png" width="20">
+            <img v-else src="../assets/calendar.png" width="20">
+            <p class="mt-1">{{ dateDivider(item.FirstRegistrationDate) }}</p>
+          </div>
+          <div class="info_container">
+            <img v-if="darkMode" src="../assets/drive-dark.png" width="20">
+            <img v-else src="../assets/drive.png" width="20">
+            <p class="mt-1">{{ dateDivider(item.NextInspectionDate) }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -95,6 +105,10 @@ export default {
       let number_st = number.toString();
       let newNumber = number_st.slice(0, -3) + '.' + number_st.slice(-3);
       return newNumber;
+    },
+    dateDivider(date){
+      let newDate = date.slice(3);
+      return newDate;
     }
   },
   // computed: {

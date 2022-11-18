@@ -11,7 +11,7 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <router-link v-for="item in navigation" :key="item.name" @click.prevent="currentUpdate(item.name)" :to="{ name: item.routerName}" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
+              <router-link v-for="item in navigation" :key="item.name" @click.prevent="currentUpdate(item.name)" :to="{ name: item.routerName}" :class="[item.current ? 'bg-sky-900 text-white' : 'text-black hover:bg-sky-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
             </div>
           </div>
         </div>
