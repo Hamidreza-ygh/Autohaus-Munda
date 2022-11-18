@@ -1,11 +1,13 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <Disclosure as="nav" class="bg-red-600 sticky top-0 z-50" v-slot="{ open }">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
+  <Disclosure as="nav" class="bg-sky-400 sticky top-0 z-50" v-slot="{ open }">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+      <div class="flex h-18 items-center justify-between">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <img class="h-12 w-150 rounded-md" src="../assets/munda_Logo.png" alt="Munda" />
+            <router-link :to="{ name: 'home' }">
+              <img class="h-16 w-200 rounded-md" src="../assets/munda_Logo.png" alt="Munda" />
+            </router-link>
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">

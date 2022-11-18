@@ -32,8 +32,8 @@
             {{ carTitle(item) }}
           </router-link>
         </h3>
-        <div class="bg-red-600 px-1 h-[22px] md:h-[24px] basis-1/3 text-center rounded-md">
-          <p class="text-sm lg:text-base font-bold text-white">€ {{ priceShowing(item.PriceSelling) }}</p>
+        <div class="bg-sky-700 px-1 h-[38px] basis-1/3 text-center rounded-md flex items-center justify-center">
+          <p class="text-base lg:text-lg font-bold text-white">€ {{ numberDivider(item.PriceSelling) }}</p>
         </div>
       </div>
       <div class="flex flex-col justify-start">
@@ -51,7 +51,7 @@
           <div class="info_container">
             <img v-if="darkMode" src="../assets/road-dark.png" width="20">
             <img v-else src="../assets/road.png" width="20">
-            <p class="mt-1">{{ item.Mileage }} km</p>
+            <p class="mt-1">{{ numberDivider(item.Mileage) }} km</p>
           </div>
           <div class="info_container">
             <img v-if="darkMode" src="../assets/gas-station-dark.png" width="20">
@@ -91,10 +91,10 @@ export default {
     psConverter(kw) {
       return Math.round(kw*1.36)
     },
-    priceShowing(price){
-      let price_st = price.toString();
-      let newPrice = price_st.slice(0, -3) + '.' + price_st.slice(-3);
-      return newPrice;
+    numberDivider(number){
+      let number_st = number.toString();
+      let newNumber = number_st.slice(0, -3) + '.' + number_st.slice(-3);
+      return newNumber;
     }
   },
   // computed: {

@@ -72,15 +72,15 @@
               <p>Ergo</p>
             </a>
           </div>
-          <div class="flex justify-between py-10">
+          <div class="flex justify-between py-10 hidden lg:inline-block">
             <div class="p-0.5 w-full">
-              <button type="button" class="w-full inline-block px-3 py-2 rounded-md text-sm font-medium bg-yellow-500 text-white leading-tight uppercase shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">
+              <button type="button" class="w-full inline-block px-3 py-2 rounded-md text-sm font-medium bg-sky-700 text-white leading-tight uppercase shadow-md hover:bg-sky-900 hover:shadow-lg focus:bg-sky-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-sky-900 active:shadow-lg transition duration-150 ease-in-out">
                 <a href="mailto:info@autohaus-munda.at">E-Mail senden</a>
               </button>
             </div>
             <div class="p-0.5 w-full">
-              <button type="button" class="w-full inline-block px-3 py-2 rounded-md text-sm font-medium bg-yellow-500 text-white leading-tight uppercase shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">
-                <a href="tel:+4313588236">+43 (0)1 - 3588236</a>
+              <button type="button" class="w-full inline-block px-3 py-2 rounded-md text-sm font-medium bg-sky-700 text-white leading-tight uppercase shadow-md hover:bg-sky-900 hover:shadow-lg focus:bg-sky-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-sky-900 active:shadow-lg transition duration-150 ease-in-out">
+                <a href="tel:+4366488716789">+43 (0) 664-8871 6789</a>
               </button>
             </div>
           </div>
@@ -93,6 +93,18 @@
         <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
           <div class="mt-5">
             <AccordionComponent v-for="(title,index) in mainTitle" :key="index" :title="title.title" :content="title.content" :show="title.show" :icon="title.icon"></AccordionComponent>
+          </div>
+          <div class="flex flex-col justify-between py-10 lg:hidden">
+            <div class="p-0.5 w-full">
+              <button type="button" class="w-full inline-block px-3 py-2 rounded-md text-sm font-medium bg-sky-700 text-white leading-tight uppercase shadow-md hover:bg-sky-900 hover:shadow-lg focus:bg-sky-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-sky-900 active:shadow-lg transition duration-150 ease-in-out">
+                <a href="mailto:info@autohaus-munda.at">E-Mail senden</a>
+              </button>
+            </div>
+            <div class="p-0.5 w-full">
+              <button type="button" class="w-full inline-block px-3 py-2 rounded-md text-sm font-medium bg-sky-700 text-white leading-tight uppercase shadow-md hover:bg-sky-900 hover:shadow-lg focus:bg-sky-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-sky-900 active:shadow-lg transition duration-150 ease-in-out">
+                <a href="tel:+4366488716789">+43 (0) 664-8871 6789</a>
+              </button>
+            </div>
           </div>
           <!-- <div>
             <h3 class="sr-only">Description</h3>
