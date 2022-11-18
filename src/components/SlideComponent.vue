@@ -10,17 +10,17 @@
     </div>
     <!-- Slider indicators -->
     <!-- <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2 ">
-      <button type="button"  v-for="(item, index) in data.length" :key="index" class="w-3 h-3 rounded-full bg-red-600" :class="currentSlide === index ? 'opacity-100' : 'opacity-50'" @click.prevent="setCurrentSlide(index)"></button>
+      <button type="button"  v-for="(item, index) in data.length" :key="index" class="w-3 h-3 rounded-full bg-sky-600" :class="currentSlide === index ? 'opacity-100' : 'opacity-50'" @click.prevent="setCurrentSlide(index)"></button>
     </div> -->
     <!-- Slider controls -->
     <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" @click.prevent="prev">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-300 dark:bg-red-600/60 group-hover:bg-red-500/50 dark:group-hover:bg-red-800 group-focus:ring-2 group-focus:ring-red dark:group-focus:ring-red-800/70 group-focus:outline-none">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-sky-300/60 dark:bg-sky-600/60 group-hover:bg-sky-500/50 dark:group-hover:bg-sky-800 group-focus:ring-2 group-focus:ring-sky dark:group-focus:ring-sky-800/70 group-focus:outline-none">
             <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
             <span class="sr-only">Previous</span>
         </span>
     </button>
     <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" @click.prevent="next">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-300 dark:bg-red-600/60 group-hover:bg-red-500/50 dark:group-hover:bg-red-800 group-focus:ring-2 group-focus:ring-red dark:group-focus:ring-red-800/70 group-focus:outline-none">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-sky-300/60 dark:bg-sky-600/60 group-hover:bg-sky-500/50 dark:group-hover:bg-sky-800 group-focus:ring-2 group-focus:ring-sky dark:group-focus:ring-sky-800/70 group-focus:outline-none">
             <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             <span class="sr-only">Next</span>
         </span>
