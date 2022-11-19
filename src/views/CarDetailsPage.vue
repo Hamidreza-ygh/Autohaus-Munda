@@ -312,11 +312,7 @@ let product = {
           },
           {
             title:'Scheckheftgepflegt',
-            value:'Known'
-          },
-          {
-            title:'Nichtraucherfahrzeug',
-            value:'Known'
+            value:this.car.ServicebookAvailable
           },
         ],
         [
@@ -352,10 +348,6 @@ let product = {
             value:this.car.CarColor
           },
           {
-            title:'Lackierung',
-            value:'Known'
-          },
-          {
             title:'Farbe der Innenausstattung',
             value:this.car.InteriorColor
           },
@@ -366,55 +358,12 @@ let product = {
         ],
         [
           {
-            title:'Karosserieform',
-            value:this.car.BodyType
-          },
-          {
-            title:'Zustand',
-            value:this.car.CarType
-          },
-          {
-            title:'Antriebsart',
-            value:this.car.DrivetrainName
-          },
-          {
-            title:'Sitzplätze',
-            value:this.car.Seats
-          },
-          {
-            title:'Türen',
-            value:this.car.Doors
-          },
-          {
-            title:'Garantie',
-            value:'12 Monaten'
+            title:'description',
+            value:this.car.Notes
           },
         ],
         [
-          {
-            title:'Karosserieform',
-            value:this.car.BodyType
-          },
-          {
-            title:'Zustand',
-            value:this.car.CarType
-          },
-          {
-            title:'Antriebsart',
-            value:this.car.DrivetrainName
-          },
-          {
-            title:'Sitzplätze',
-            value:this.car.Seats
-          },
-          {
-            title:'Türen',
-            value:this.car.Doors
-          },
-          {
-            title:'Garantie',
-            value:'12 Monaten'
-          },
+         
         ],
       ];
       console.log('2', this.mainTitle);

@@ -12,7 +12,7 @@
         </template>
         <!-- loading state via #fallback slot -->
         <template #fallback>
-          <Loading />
+          Loading...
         </template>
       </Suspense>
     </main>
@@ -23,7 +23,7 @@
 <script>
   import AppNavbar from "./components/TheNavbar.vue";
   import AppFooter from "./components/TheFooter.vue"
-  import Loading from "./components/LoadingComponent.vue";
+  // import Loading from "./components/LoadingComponent.vue";
   import CarService from '@/services/CarService';
   export default {
     props: [],
@@ -53,7 +53,7 @@
         });
     },
     methods: {},
-    components: { AppNavbar, AppFooter, Loading}
+    components: { AppNavbar, AppFooter, }
   }
 </script>
 

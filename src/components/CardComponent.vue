@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="flex flex-col justify-start">
-        <div class="grid grid-cols-2 gap-x-20 sm:gap-x-4 md:gap-x-20 text-sm text-gray-500 dark:text-small-dark">
+        <div class="grid grid-cols-2 gap-y-4 gap-x-20 sm:gap-x-4 md:gap-x-20 text-sm text-gray-500 dark:text-small-dark">
           <div class="info_container">
             <img v-if="darkMode" src="../assets/gearshift-dark.png" width="20">
             <img v-else src="../assets/gearshift.png" width="20">
