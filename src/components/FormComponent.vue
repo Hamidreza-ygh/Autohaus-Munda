@@ -364,7 +364,7 @@ export default {
             country: "required",
           },
           personSchema: {
-            firstName: 'firstNameRequired',
+            firstName: 'nameRequired',
             lastName: 'lastNameRequired',
             emailAddress:'required|min:3|max:100|email',
             city: "required",

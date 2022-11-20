@@ -11,7 +11,7 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <router-link v-for="item in navigation" :key="item.name" @click.prevent="currentUpdate(item.name)" :to="{ name: item.routerName}" :class="[item.current ? 'bg-sky-900 text-white' : 'text-black hover:bg-sky-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
+              <router-link v-for="item in navigation" :key="item.name" @click.prevent="currentUpdate(item.name)" :to="{ name: item.routerName}" :class="[currentPage===item.name ? 'bg-sky-900 text-white' : 'text-black hover:bg-sky-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
             </div>
           </div>
         </div>
@@ -115,20 +115,22 @@
     },
     methods: {
       currentUpdate(page) {
-        this.navigation.forEach( e => {
-          if (e.name === page) {
-            e.current = true;
-            // this.header = e.name
-          }
-          else {
-            e.current = false;
-          }
-        });
+        this.$store.state.currentPage = page;
+        // this.navigation.forEach( e => {
+        //   if (e.name === page) {
+        //     e.current = true;
+        //     // this.header = e.name
+        //   }
+        //   else {
+        //     e.current = false;
+        //   }
+        // });
       }
     },
     computed: {
       ...mapState({
         navigation: 'navigationData',
+        currentPage: 'currentPage'
       }),
     }
   }
