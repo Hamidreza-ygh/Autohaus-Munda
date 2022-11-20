@@ -50,7 +50,7 @@
               {{ alertMessage }}
             </div>
             <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sky-900 sm:w-fit hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Senden</button>
-            <div class="g-recaptcha" data-sitekey="6LeHhh8jAAAAAD-FVThvJy991xsMqmmJCb3naJjV"></div>
+            <div class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div>
         </VeeForm>
     </div>
   </section>
@@ -89,7 +89,8 @@ export default {
         //   this.showAlert = true;
         //   this.alertMessage = error;
         // }
-        values['subject'] = 'Kontakt'
+        values['subject'] = 'Kontakt';
+        values['g-recaptcha-response'] = '6Ld7ASAjAAAAAEjf0u8aoLJhz6047jPa3MdBsqPX';
         console.log(values);
         emailjs.send('contact_service','contact_template', values, 'WH7VjLlIWAm1Q3Aw_')
         .then( () => {
