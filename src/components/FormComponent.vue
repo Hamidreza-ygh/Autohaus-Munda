@@ -76,17 +76,18 @@
         </div>
       </div>
       <div class="mt-5 md:col-span-2 md:mt-0">
-        <form action="#" method="POST">
+        <vee-form action="#" method="POST" :validation-schema="carSchema">
           <div class="overflow-hidden shadow sm:rounded-md">
             <div class="bg-white px-4 py-5 sm:p-6">
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                   <label for="country" class="block text-sm font-medium text-gray-700">Hersteller</label>
-                  <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                  <vee-field as="select" id="country" name="country" autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                     <option>Wien</option>
                     <option>Salzburg</option>
                     <option>Insbrück</option>
-                  </select>
+                  </vee-field>
+                  <ErrorMessage class="text-small-error" name='country'/>
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
@@ -197,7 +198,7 @@
               <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Anfrage senden</button>
             </div> -->
           </div>
-        </form>
+        </vee-form>
       </div>
     </div>
   </div>
@@ -217,52 +218,45 @@
         </div>
       </div>
       <div class="mt-5 md:col-span-2 md:mt-0">
-        <form action="#" method="POST">
+        <vee-form :validation-schema="personSchema" @submit="sendRequest">
           <div class="overflow-hidden shadow sm:rounded-md">
             <div class="bg-white px-4 py-5 sm:p-6">
               <div class="grid grid-cols-6 gap-6">
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="first-name" class="block text-sm font-medium text-gray-700">Vorname</label>
-                  <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                </div>
 
+                <!-- First Name -->
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="firstName" class="block text-sm font-medium text-gray-700">Vorname</label>
+                  <vee-field type="text" name="firstName" id="firstName" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                  <ErrorMessage class="text-small-error" name="firstName" />
+                </div>
+                
+                <!-- Last Name -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="last-name" class="block text-sm font-medium text-gray-700">Nachname</label>
-                  <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                  <vee-field type="text" name="lastName" id="lastName" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                  <ErrorMessage class="text-small-error" name="lastName" />
                 </div>
-
+                
+                <!-- Email -->
                 <div class="col-span-6 sm:col-span-4">
-                  <label for="email-address" class="block text-sm font-medium text-gray-700">E-mail Address</label>
-                  <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                </div>
-
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="country" class="block text-sm font-medium text-gray-700">Stadt</label>
-                  <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                    <option>Wien</option>
-                    <option>Salzburg</option>
-                    <option>Insbrück</option>
-                  </select>
+                  <label for="emailAddress" class="block text-sm font-medium text-gray-700">E-mail Address</label>
+                  <vee-field type="text" name="emailAddress" id="emailAddress" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                  <ErrorMessage class="text-small-error" name="emailAddress" />
                 </div>
 
                 <div class="col-span-6">
-                  <label for="street-address" class="block text-sm font-medium text-gray-700">Straße/Gasse/Platz</label>
-                  <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                  <label for="address" class="block text-sm font-medium text-gray-700">Addresse(Straße/Hausnummer/Stiege/Türnummer)</label>
+                  <vee-field type="text" name="address" id="address" autocomplete="address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
                 </div>
 
-                <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                  <label for="city" class="block text-sm font-medium text-gray-700">Hausnummer</label>
-                  <input type="text" name="city" id="city" autocomplete="address-level2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                </div>
-
-                <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                  <label for="region" class="block text-sm font-medium text-gray-700">Block/Stiege/Türnummer</label>
-                  <input type="text" name="region" id="region" autocomplete="address-level1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="city" class="block text-sm font-medium text-gray-700">Stadt</label>
+                  <vee-field type="text" id="city" name="city" autocomplete="city-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                   <label for="postal-code" class="block text-sm font-medium text-gray-700">Postleitzahl</label>
-                  <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                  <vee-field type="text" name="postalCode" id="postalCode" autocomplete="postal-code" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
                 </div>
               </div>
             </div>
@@ -270,7 +264,7 @@
               <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-red-700 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Anfrage senden</button>
             </div>
           </div>
-        </form>
+        </vee-form>
       </div>
     </div>
   </div>
@@ -357,11 +351,33 @@
 
 
 <script>
+import { ErrorMessage } from 'vee-validate';
+
 export default {
   name: "FormComponent",
   props: {
-    data: Array,
+      data: Array,
   },
+  data() {
+      return {
+          carSchema: {
+            country: "required",
+          },
+          personSchema: {
+            firstName: 'firstNameRequired',
+            lastName: 'lastNameRequired',
+            emailAddress:'required|min:3|max:100|email',
+            city: "required",
+          },
+      };
+  },
+  
+  methods: {
+    sendRequest (values) {
+      console.log(values);
+    },
+  },
+  components: { ErrorMessage }
 };
 </script>
 
