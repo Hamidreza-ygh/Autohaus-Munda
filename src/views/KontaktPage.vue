@@ -1,6 +1,6 @@
 <template>
   <section class="bg-white dark:bg-gray-900 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-1 sm:px-10 lg:grid-cols-2 lg:px-20 xl:gap-x-8">
-    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md" >
+    <div class="py-8 lg:py-16 px-4 max-w-screen-md" >
       <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-start text-gray-900 dark:text-white">Lageplan</h2>
       <div class="mapouter">
         <div class="gmap_canvas">
@@ -11,7 +11,17 @@
           
         </div>
       </div>
-      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to send feedback about a beta feature? Let us know.</p>
+      <div class="flex justify-between">
+        <div class="basis-1/2 flex flex-col">
+          <p class="mb-2 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Mo-Fr</p>
+          <p class="mb-2 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Sa</p>
+        </div>
+        <div class="basis-1/2 flex flex-col">
+          <p class="mb-2 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">09:00 bis 19:00 Uhr</p>
+          <p class="mb-2 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">10:00 bis 15:00 Uhr</p>
+        </div>
+      </div>
+      <!-- <p class="mb-8 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to send feedback about a beta feature? Let us know.</p> -->
     </div>
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md order-first md:order-last">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Kontakt</h2>
@@ -29,6 +39,9 @@
             <div class="sm:col-span-2">
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Nachricht</label>
                 <vee-field as="textarea" type="text" name="message" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..." />
+            </div>
+            <div v-if="showAlert" class="bg-green-500 text-white text-center font-bold p-5 mb-4">
+              {{ alertMessage }}
             </div>
             <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sky-900 sm:w-fit hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Senden</button>
         </VeeForm>
@@ -52,12 +65,32 @@ export default {
         contactSchema: {
           emailAddress: "required|min:3|max:100|email",
         },
+        showAlert: false,
+        alertMessage: 'Ihre Nachricht wird unterbreitet',
       };
     },
     methods: {
-      sendEmail(values) {
+      async sendEmail(values) {
+        // try {
+        //   console.log(values);
+        //   emailjs.send('contact_service','contact_template', values, 'WH7VjLlIWAm1Q3Aw_');
+        //   this.showAlert = true;
+        // } catch(error) {
+        //   this.showAlert = true;
+        //   this.alertMessage = error;
+        // }
         console.log(values);
         emailjs.send('contact_service','contact_template', values, 'WH7VjLlIWAm1Q3Aw_')
+        .then( () => {
+          this.showAlert = true;
+        })
+        .catch( (error) => {
+          this.showAlert = true;
+          this.alertMessage = error;
+        });
+
+        this.showAlert = false;
+        this.alertMessage = 'Ihre Nachricht wird unterbreitet';
       },
     },
     components: { ErrorMessage }
