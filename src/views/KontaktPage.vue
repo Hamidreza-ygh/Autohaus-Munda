@@ -49,7 +49,8 @@
             <div v-if="showAlert" class="bg-green-500 text-white text-center font-bold p-5 mb-4">
               {{ alertMessage }}
             </div>
-            <button type="submit" data-sitekey="6Ld4Hx8jAAAAAICPi_8DeDNrMPOL7fVkVOKw6qpb"  class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sky-900 sm:w-fit hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Senden</button>
+            <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sky-900 sm:w-fit hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Senden</button>
+            <div class="g-recaptcha" data-sitekey="6LeHhh8jAAAAAD-FVThvJy991xsMqmmJCb3naJjV"></div>
         </VeeForm>
     </div>
   </section>
