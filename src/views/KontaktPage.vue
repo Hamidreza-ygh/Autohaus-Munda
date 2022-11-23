@@ -49,7 +49,7 @@
             <div v-if="showAlert" class="bg-green-500 text-white text-center font-bold p-5 mb-4">
               {{ alertMessage }}
             </div>
-            <div id="recaptcha-main" ref={refCaptcha} class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div>
+            <div id="recaptcha-main" class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div>
             <!-- <vue-recaptcha 
               sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw">
             </vue-recaptcha> -->
@@ -64,7 +64,7 @@
 <script setup>
 import { ErrorMessage } from 'vee-validate';
 import emailjs from '@emailjs/browser';
-import { ref } from 'vue'
+// import { ref } from 'vue'
 
 </script>
   
@@ -88,7 +88,7 @@ export default {
         initialMessage: 'Guten Tag,\n\nich interessiere mich für Ihr Fahrzeug. Kontaktieren Sie mich bitte.\n\nMit freundlichen Grüßen',
         showAlert: false,
         alertMessage: 'Ihre Nachricht wurde erfolgreich gesendet.',
-        refCaptcha: ref(),
+        // refCaptcha: ref(),
       };
     },
     methods: {
@@ -101,7 +101,7 @@ export default {
         //   this.showAlert = true;
         //   this.alertMessage = error;
         // }
-        const token = this.refCaptcha.current.getValue();
+        const token = window.grecaptcha.getResponse();
         values['subject'] = 'Kontakt';
         values['g-recaptcha-response'] = token;
         console.log(values);
