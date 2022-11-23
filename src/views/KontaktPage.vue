@@ -49,8 +49,13 @@
             <div v-if="showAlert" class="bg-green-500 text-white text-center font-bold p-5 mb-4">
               {{ alertMessage }}
             </div>
+            <div id="recaptcha-main" class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div>
+            <!-- <vue-recaptcha 
+              sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw">
+            </vue-recaptcha> -->
             <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sky-900 sm:w-fit hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Senden</button>
-            <div class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div>
+            
+            <!-- <div class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div> -->
         </VeeForm>
     </div>
   </section>
@@ -63,10 +68,15 @@ import emailjs from '@emailjs/browser';
 </script>
   
 <script>
+// import VueRecaptcha from 'vue-recaptcha';
 export default {
     name: "KontaktPage",
     props: [],
-    emits: [],
+    created() {
+      setTimeout(() => {
+          window.grecaptcha.render('recaptcha-main'); // 'recaptcha-main' is the id that was assigned to the widget
+      }, 2000);
+    },
     data() {
       return {
         contactSchema: {
@@ -104,8 +114,12 @@ export default {
         this.showAlert = false;
         this.alertMessage = 'Ihre Nachricht wurde erfolgreich gesendet.';
       },
+      
     },
-    components: { ErrorMessage }
+    components: { 
+      ErrorMessage,
+      // VueRecaptcha,
+    }
 }
 </script>
   
