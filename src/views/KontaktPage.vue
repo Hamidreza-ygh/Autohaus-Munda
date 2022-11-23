@@ -46,16 +46,11 @@
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Nachricht</label>
                 <vee-field as="textarea" :value="initialMessage" type="text" name="message" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
             </div>
-            <div v-if="showAlert" class="bg-green-500 text-white text-center font-bold p-5 mb-4">
+            <div id="recaptcha-main" class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div>
+            <div v-if="showAlert" class="block text-white text-center font-bold p-5 mb-4 rounded-lg shadow-sm border focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500" :class="alertSuccess ? 'bg-green-500' : 'bg-red-500'">
               {{ alertMessage }}
             </div>
-            <div id="recaptcha-main" class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div>
-            <!-- <vue-recaptcha 
-              sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw">
-            </vue-recaptcha> -->
             <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sky-900 sm:w-fit hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Senden</button>
-            
-            <!-- <div class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div> -->
         </VeeForm>
     </div>
   </section>
@@ -87,20 +82,13 @@ export default {
         },
         initialMessage: 'Guten Tag,\n\nich interessiere mich für Ihr Fahrzeug. Kontaktieren Sie mich bitte.\n\nMit freundlichen Grüßen',
         showAlert: false,
+        alertSuccess:false,
         alertMessage: 'Ihre Nachricht wurde erfolgreich gesendet.',
         // refCaptcha: ref(),
       };
     },
     methods: {
       async sendEmail(values) {
-        // try {
-        //   console.log(values);
-        //   emailjs.send('contact_service','contact_template', values, 'WH7VjLlIWAm1Q3Aw_');
-        //   this.showAlert = true;
-        // } catch(error) {
-        //   this.showAlert = true;
-        //   this.alertMessage = error;
-        // }
         const token = window.grecaptcha.getResponse();
         values['subject'] = 'Kontakt';
         values['g-recaptcha-response'] = token;
@@ -108,14 +96,17 @@ export default {
         emailjs.send('contact_service','contact_template', values, 'WH7VjLlIWAm1Q3Aw_')
         .then( () => {
           this.showAlert = true;
+          this.alertSuccess = true;
         })
-        .catch( (error) => {
+        .catch( () => {
           this.showAlert = true;
-          this.alertMessage = error;
+          this.alertMessage = 'Bitte füllen Sie die Captcha-Überprüfung aus';
+          this.alertSuccess = false;
         });
 
         this.showAlert = false;
         this.alertMessage = 'Ihre Nachricht wurde erfolgreich gesendet.';
+        this.alertSuccess = false;
       },
       
     },
