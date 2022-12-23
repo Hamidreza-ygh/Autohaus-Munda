@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue"
 import KontaktPage from "../views/KontaktPage.vue"
 import CarDetailsPage from "../views/CarDetailsPage.vue"
 import RequestPage from "../views/RequestPage.vue"
+import TippView from "../views/TippView.vue"
 
 const routes = [
   {
@@ -14,6 +15,11 @@ const routes = [
     path: '/anfrage',
     name: 'request',
     component: RequestPage
+  },
+  {
+    path: '/tipps',
+    name: 'tipps',
+    component: TippView
   },
   {
     path: '/kontakt',
