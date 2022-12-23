@@ -53,7 +53,7 @@
         });
     },
     methods: {},
-    components: { AppNavbar, AppFooter, }
+    components: {  AppFooter, AppNavbar}
   }
 </script>
 
