@@ -107,6 +107,8 @@ export default {
 
       // emit change page event to parent component
       this.$emit('changePage', pageOfItems);
+
+      window.scrollTo({ top: 450, behavior: 'smooth' });
     },
   },
 };

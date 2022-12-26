@@ -11,14 +11,14 @@
           
         </div>
       </div>
-      <div class="flex justify-between">
+      <div class="flex justify-start">
         <div class="basis-1/2 flex flex-col">
-          <p class="mb-2 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Mo-Fr</p>
-          <p class="mb-2 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Sa</p>
+          <p class="mb-2 lg:mb-2 font-light text-left text-gray-500 dark:text-gray-400 sm:text-xl">Mo-Fr</p>
+          <p class="mb-2 lg:mb-2 font-light text-left text-gray-500 dark:text-gray-400 sm:text-xl">Sa</p>
         </div>
         <div class="basis-1/2 flex flex-col">
-          <p class="mb-2 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">09:00 bis 19:00 Uhr</p>
-          <p class="mb-2 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">10:00 bis 15:00 Uhr</p>
+          <p class="mb-2 lg:mb-2 font-light text-left text-gray-500 dark:text-gray-400 sm:text-xl">09:00 bis 19:00 Uhr</p>
+          <p class="mb-2 lg:mb-2 font-light text-left text-gray-500 dark:text-gray-400 sm:text-xl">10:00 bis 15:00 Uhr</p>
         </div>
       </div>
       <!-- <p class="mb-8 lg:mb-2 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to send feedback about a beta feature? Let us know.</p> -->
