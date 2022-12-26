@@ -1,8 +1,18 @@
 
 <template>
-  <toastNotification :show="showAlert" :success="alertSuccess">
-    {{ alertMessage }}
-  </toastNotification>
+  <transition
+    enter-active-class="ease-out duration-300"
+    enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    enter-to-class="opacity-100 translate-y-0 sm:scale-100"
+    leave-active-class="ease-in duration-200"
+    leave-from-class="opacity-100 translate-y-0 sm:scale-100"
+    leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+  >
+    <toastNotification :show="showAlert" :success="alertSuccess">
+      {{ alertMessage }}
+    </toastNotification>
+  </transition>
+  
   <div>
     
     <VeeForm ref="autoForm" @submit="sendEmail(formData)" :validation-schema="carSchema">
@@ -200,7 +210,7 @@
                 </div>
               </div>
               <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                <button type="Submit"  class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sky-900 sm:w-fit hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Anfrage senden</button>
+                <button type="Submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sky-900 sm:w-fit hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">Anfrage senden</button>
               </div>
             </div>
             
@@ -286,6 +296,7 @@ export default {
   
   methods: {
     async sendEmail(values) {
+      this.scrollTop()
       // const token = window.grecaptcha.getResponse();
       values['subject'] = 'Anfrage';
       // values['g-recaptcha-response'] = token;
@@ -293,14 +304,14 @@ export default {
       emailjs.send('anfrage_service','anfrage_template', values, 'WH7VjLlIWAm1Q3Aw_')
       .then( () => {
         this.showAlert = true;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // window.scrollTo({ top: 0, behavior: 'smooth' });
         this.alertSuccess = true;
         this.$refs.autoForm.resetForm();
       })
       .catch( () => {
         this.showAlert = true;
         this.alertMessage = 'Bitte versuchen Sie es noch einmal';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // window.scrollTo({ top: 0, behavior: 'smooth' });
         this.alertSuccess = false;
       });
       setTimeout(() => {
@@ -311,9 +322,8 @@ export default {
       // this.alertMessage = 'Ihre Nachricht wurde erfolgreich gesendet.';
       // this.alertSuccess = false;
     },
-    sendRequest () {
-      console.log(this.formData);
-      console.log('salam');
+    scrollTop () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     // sendRequest () {
     //   for( var index = 0; index < document.forms.length; index++ ) {
