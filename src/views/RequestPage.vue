@@ -1,6 +1,6 @@
 <template>
   <div class="pageLayout">
-    <h2 class="mb-8 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Fahrzeug Verkaufen</h2>
+    <h2 class="mb-8 text-2xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Fahrzeug Verkaufen</h2>
     <FormComponent :data="formData"></FormComponent>
   </div>
 </template>
@@ -81,8 +81,6 @@
           karosserie: [
             "Limousine",
             "Kombi",
-            "2/3-Türer",
-            "4/5-Türer",
             "Cabrio",
             "Coupe",
             "Bus",

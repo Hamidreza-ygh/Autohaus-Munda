@@ -36,8 +36,8 @@
           <p class="text-base lg:text-lg font-bold text-white">€ {{ numberDivider(item.PriceSelling) }}</p>
         </div>
       </div>
-      <div class="flex flex-col justify-start">
-        <div class="grid grid-cols-2 gap-y-4 gap-x-20 sm:gap-x-4 md:gap-x-20 text-sm text-gray-500 dark:text-small-dark">
+      <div class="flex flex-col justify-start mt-4">
+        <div class="grid grid-cols-2 gap-y-4 gap-x-20 sm:gap-x-4 md:gap-x-4 text-sm text-gray-500 dark:text-small-dark">
           <div class="info_container">
             <img v-if="darkMode" src="../assets/gearshift-dark.png" width="20">
             <img v-else src="../assets/gearshift.png" width="20">
@@ -46,7 +46,7 @@
           <div class="info_container">
             <img v-if="darkMode" src="../assets/speedometer-dark.png" width="20">
             <img v-else src="../assets/speedometer.png" width="20">
-            <p class="mt-1">{{ item.HorsePowerKW }} kW ( {{ psConverter(item.HorsePowerKW )}} PS)</p>
+            <p class="mt-1">({{ psConverter(item.HorsePowerKW )}} PS){{ item.HorsePowerKW }}kW</p>
           </div>
           <div class="info_container">
             <img v-if="darkMode" src="../assets/road-dark.png" width="20">

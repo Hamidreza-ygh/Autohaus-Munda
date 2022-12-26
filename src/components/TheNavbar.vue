@@ -11,7 +11,7 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <router-link v-for="item in navigation" :key="item.name" @click.prevent="currentUpdate(item.name)" :to="{ name: item.routerName}" :class="[currentPage===item.name ? 'bg-sky-900 text-white' : 'text-black hover:bg-sky-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
+              <router-link v-for="item in navigation" :key="item.name" @click.prevent="currentUpdate(item.routerName)" :to="{ name: item.routerName}" :class="[currentPage===item.routerName ? 'bg-sky-900 text-white' : 'text-black hover:bg-sky-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
     >
       <DisclosurePanel class="md:hidden" v-slot="{close}">
         <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-          <router-link v-for="item in navigation" :key="item.name" @click.prevent="currentUpdate(item.name, close)" :to="{ name: item.routerName}" :class="[currentPage===item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
+          <router-link v-for="item in navigation" :key="item.name" @click.prevent="currentUpdate(item.routerName, close)" :to="{ name: item.routerName}" :class="[currentPage===item.routerName ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
         </div>
         <div class="border-t border-gray-700 pt-4 pb-3">
           <div class="flex items-center px-5">
@@ -115,6 +115,11 @@
     name: 'TheNavbar',
     props: [],
     emits: [],
+    mounted() {
+      setTimeout(() => {
+        this.$store.state.currentPage = this.$route.name;
+      }, 500);
+    },
     data() {
       return{
         header: this.$route.name,
@@ -124,7 +129,9 @@
     methods: {
       currentUpdate(page, close) {
         this.$store.state.currentPage = page;
-        close();
+        if (close) {
+          close();
+        }
         // this.navigation.forEach( e => {
         //   if (e.name === page) {
         //     e.current = true;

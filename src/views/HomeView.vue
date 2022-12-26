@@ -12,6 +12,7 @@
       </div>
     </div>
   </div>
+  <Loading v-if="showLoading"></Loading>
   <div class="pageLayout">
     <div class="mx-auto max-w-2xl py-10 px-4 sm:py-18 sm:px-6 lg:max-w-7xl lg:px-8">
       <!-- <h2 class="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2> -->
@@ -53,7 +54,8 @@
   // import SlideComponentVue from '@/components/SlideComponent.vue';
   import CardComponent from '@/components/CardComponent.vue';
   import { mapState } from 'vuex';
-  // import CarService from '@/services/CarService';
+  import Loading from "@/components/LoadingComponent.vue";
+  import CarService from '@/services/CarService';
   export default {
     name: "HomePage",
     props: [],
@@ -62,7 +64,31 @@
         return {
           pageOfItems: [],
           slideData: null,
+          showLoading: false,
         };
+    },
+    created() {
+      this.showLoading = true;
+      CarService.getCars()
+        .then((response) => {
+          this.$store.state.cars = response.data.Cars;
+          response.data.Cars.forEach(i => {
+            let innerMap = {};
+            innerMap['imageSrc'] = i['Image1'];
+            i['Image1'] = [];
+            i['Image1'].push(innerMap);
+          });
+          this.$store.state.carsObject = response.data.Cars.reduce(function (r, a) {
+            r[a.CarID] = r[a.CarID] || [];
+            r[a.CarID].push(a);
+            return r;
+          }, Object.create(null));
+          // console.log(response.data.Cars);
+          this.showLoading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     beforeUpdate () {
       this.slideData = this.cars.map(value => value.Image1[0]);
@@ -82,6 +108,6 @@
         cars: 'cars',
       }),
     },
-    components: { CardComponent, PaginationComponent}
+    components: { CardComponent, PaginationComponent, Loading}
   }
 </script>
