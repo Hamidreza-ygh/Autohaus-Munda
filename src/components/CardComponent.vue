@@ -46,7 +46,7 @@
           <div class="info_container">
             <img v-if="darkMode" src="../assets/speedometer-dark.png" width="20">
             <img v-else src="../assets/speedometer.png" width="20">
-            <p class="mt-1">({{ psConverter(item.HorsePowerKW )}} PS){{ item.HorsePowerKW }}kW</p>
+            <p class="mt-1">{{ psConverter(item.HorsePowerKW )}} PS({{ item.HorsePowerKW }}kW)</p>
           </div>
           <div class="info_container">
             <img v-if="darkMode" src="../assets/road-dark.png" width="20">
