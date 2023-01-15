@@ -1,6 +1,17 @@
 import { createStore } from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
+import * as Cookies from 'js-cookie';
 
 export default createStore({
+  plugins: [
+    createPersistedState({
+      storage: {
+        getItem: key => Cookies.get(key),
+        setItem: (key, value) => Cookies.set(key, value, { expires: 3, secure: true }),
+        removeItem: key => Cookies.remove(key)
+      }
+    })
+  ],
   state: {
     currentPage: 'Unsere Fahrzeuge',
     navigationData: [
@@ -8,6 +19,13 @@ export default createStore({
       { name: 'Service', href: '#', current: false },
       { name: 'Fahrzeug Verkaufen', routerName: 'request', current: false },
       // { name: 'Angebot', href: '#', current: false },
+      { name: 'Tipps', routerName: 'tipps', current: false },
+      { name: 'Kontakt', routerName: 'contact', current: false },
+    ],
+    footerLinks: [
+      { name: 'Datenschutz', routerName: 'dataProtection', current: true },
+      { name: 'Service', href: '#', current: false },
+      { name: 'Impressum', routerName: 'impressum', current: false },
       { name: 'Tipps', routerName: 'tipps', current: false },
       { name: 'Kontakt', routerName: 'contact', current: false },
     ],
@@ -31,5 +49,5 @@ export default createStore({
   actions: {
   },
   modules: {
-  }
+  },
 })

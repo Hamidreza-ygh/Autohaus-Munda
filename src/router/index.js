@@ -4,6 +4,8 @@ import KontaktPage from "../views/KontaktPage.vue"
 import CarDetailsPage from "../views/CarDetailsPage.vue"
 import RequestPage from "../views/RequestPage.vue"
 import TippView from "../views/TippView.vue"
+import ImpressumPage from "../views/ImpressumPage.vue"
+import DatenschutzPage from "../views/DatenschutzPage.vue"
 
 const routes = [
   {
@@ -25,6 +27,16 @@ const routes = [
     path: '/kontakt',
     name: 'contact',
     component: KontaktPage
+  },
+  {
+    path: '/impressum',
+    name: 'impressum',
+    component: ImpressumPage
+  },
+  {
+    path: '/datenschutz',
+    name: 'dataProtection',
+    component: DatenschutzPage
   },
   {
     path: '/car/:carId',

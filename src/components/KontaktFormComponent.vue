@@ -1,22 +1,22 @@
 <template>
   <VeeForm :validation-schema="contactSchema" @submit="sendEmail" class="space-y-8">
       <div>
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">E-mail *</label>
+        <label for="email" class="block mb-2 text-left text-sm font-medium text-gray-900 dark:text-gray-300">E-mail *</label>
         <vee-field type="text" name="emailAddress" id="emailAddress" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="example@email.com" />
         <ErrorMessage class="text-small-error" name="emailAddress" />
       </div>
       <div>
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ihr Name *</label>
+        <label for="name" class="block mb-2 text-left text-sm font-medium text-gray-900 dark:text-gray-300">Ihr Name *</label>
         <vee-field type="text" name="name" id="name" autocomplete="given-name" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="z.B. Max Mustermann" />
         <ErrorMessage class="text-small-error" name="name" />
       </div>
       <div>
-        <label for="phoneNumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ihre Telefonnummer (Optional)</label>
+        <label for="phoneNumber" class="block mb-2 text-left text-sm font-medium text-gray-900 dark:text-gray-300">Ihre Telefonnummer (Optional)</label>
         <vee-field type="tel" name="phoneNumber" id="phoneNumber" autocomplete="given-phoneNumber" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="z.B. 0043 123 4567899" />
         <ErrorMessage class="text-small-error" name="phoneNumber" />
       </div>
       <div class="sm:col-span-2">
-          <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Nachricht</label>
+          <label for="message" class="block mb-2 text-left text-sm font-medium text-gray-900 dark:text-gray-400">Nachricht</label>
           <vee-field as="textarea" :value="initialMessage" type="text" name="message" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
       </div>
       <div id="recaptcha-main" class="g-recaptcha" data-sitekey="6Ld7ASAjAAAAAPauGCMiKEK9egntfm46N_nuh0Lw"></div>
