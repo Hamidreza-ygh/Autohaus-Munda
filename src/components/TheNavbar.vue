@@ -5,7 +5,7 @@
       <div class="flex h-18 items-center justify-between">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <router-link :to="{ name: 'home' }">
+            <router-link :to="{ name: 'home' }" @click.prevent="currentUpdate('home')">
               <img class="h-16 w-200 rounded-md" src="../assets/munda_Logo.png" alt="Munda" />
             </router-link>
           </div>
@@ -116,9 +116,9 @@
     props: [],
     emits: [],
     mounted() {
-      setTimeout(() => {
+      this.$watch('$route.name', ()=> {
         this.$store.state.currentPage = this.$route.name;
-      }, 500);
+      });
     },
     data() {
       return{

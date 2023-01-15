@@ -21,9 +21,24 @@ export default {
   // },
   async getDetailCars(carId) {
     try {
+      const mainRes = await this.getCars();
+      const objectedRes = mainRes.data.Cars.reduce(function (r, a) {
+        r[a.CarID] = r[a.CarID] || [];
+        r[a.CarID].push(a);
+        return r;
+      }, Object.create(null));
       const res = await apiClient.get("/" + carId);
+      let outList = [];
+      let outMap = objectedRes[carId][0];
+      res.data.Cars[0].Images.forEach(i => {
+          let innerMap = {};
+          innerMap["imageSrc"] = i;
+          outList.push(innerMap);
+      });
+      outMap["images"] = outList;
       console.log('resIst', res);
-      return res;
+      console.log('outMap', outMap);
+      return outMap;
     } catch (error) {
       console.log(error);
       return error;

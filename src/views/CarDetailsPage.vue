@@ -22,6 +22,7 @@
   ```
 -->
 <template>
+  <Loading v-if="showLoading"></Loading>
   <Modal @close="closeModal" :show="modalShow" :maxWidth="'4xl'">
       <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
           <div @click="closeModal" class="absolute right-[15px] top-[15px] cursor-pointer">
@@ -167,6 +168,7 @@
 import SlideComponent from '@/components/SlideComponent.vue';
 import AccordionComponent from '@/components/AccordionComponent.vue';
 import Modal from '@/components/ModalComponent.vue';
+import Loading from "@/components/LoadingComponent.vue";
 
 // import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
 // const features = [
@@ -242,28 +244,32 @@ let product = {
     name: "CarDetailsPage",
     data() {
         return {
-            car: {
-                type: Object
-            },
-            modalShow: false,
-            currentIndex: 0,
-            mainTitle: [
-                { title: "Basisdaten", show: true, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path d=\"M21 6.375c0 2.692-4.03 4.875-9 4.875S3 9.067 3 6.375 7.03 1.5 12 1.5s9 2.183 9 4.875z\" /><path d=\"M12 12.75c2.685 0 5.19-.586 7.078-1.609a8.283 8.283 0 001.897-1.384c.016.121.025.244.025.368C21 12.817 16.97 15 12 15s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.285 8.285 0 001.897 1.384C6.809 12.164 9.315 12.75 12 12.75z\" /><path d=\"M12 16.5c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 001.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 001.897 1.384C6.809 15.914 9.315 16.5 12 16.5z\" /><path d=\"M12 20.25c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 001.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 001.897 1.384C6.809 19.664 9.315 20.25 12 20.25z\" /></svg>" },
-                { title: "Fahrzeughistorie", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M7.502 6h7.128A3.375 3.375 0 0118 9.375v9.375a3 3 0 003-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 00-.673-.05A3 3 0 0015 1.5h-1.5a3 3 0 00-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6zM13.5 3A1.5 1.5 0 0012 4.5h4.5A1.5 1.5 0 0015 3h-1.5z\" clip-rule=\"evenodd\" /><path fill-rule=\"evenodd\" d=\"M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625V9.375zM6 12a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V12zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 15a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V15zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 18a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V18zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75z\" clip-rule=\"evenodd\" /></svg>" },
-                { title: "Technische Daten", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"> <path fill-rule=\"evenodd\" d=\"M12 6.75a5.25 5.25 0 016.775-5.025.75.75 0 01.313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 011.248.313 5.25 5.25 0 01-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 112.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0112 6.75zM4.117 19.125a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008z\" clip-rule=\"evenodd\" /> </svg>" },
-                { title: "Energieverbrauch", show: true, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z\" clip-rule=\"evenodd\" /></svg>" },
-                { title: "Ausstattung", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z\" clip-rule=\"evenodd\" /></svg>" },
-                { title: "Farbe und Innenausstattung", show: true, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M20.599 1.5c-.376 0-.743.111-1.055.32l-5.08 3.385a18.747 18.747 0 00-3.471 2.987 10.04 10.04 0 014.815 4.815 18.748 18.748 0 002.987-3.472l3.386-5.079A1.902 1.902 0 0020.599 1.5zm-8.3 14.025a18.76 18.76 0 001.896-1.207 8.026 8.026 0 00-4.513-4.513A18.75 18.75 0 008.475 11.7l-.278.5a5.26 5.26 0 013.601 3.602l.502-.278zM6.75 13.5A3.75 3.75 0 003 17.25a1.5 1.5 0 01-1.601 1.497.75.75 0 00-.7 1.123 5.25 5.25 0 009.8-2.62 3.75 3.75 0 00-3.75-3.75z\" clip-rule=\"evenodd\" /></svg>" },
-                { title: "Fahrzeugbeschreibung", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path d=\"M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z\" /></svg>" },
-                { title: "Preisbewertung", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path d=\"M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z\" /><path fill-rule=\"evenodd\" d=\"M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z\" clip-rule=\"evenodd\" /><path d=\"M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z\" /></svg>" },
-            ],
+          car: {
+              type: Object
+          },
+          modalShow: false,
+          currentIndex: 0,
+          mainTitle: [
+              { title: "Basisdaten", show: true, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path d=\"M21 6.375c0 2.692-4.03 4.875-9 4.875S3 9.067 3 6.375 7.03 1.5 12 1.5s9 2.183 9 4.875z\" /><path d=\"M12 12.75c2.685 0 5.19-.586 7.078-1.609a8.283 8.283 0 001.897-1.384c.016.121.025.244.025.368C21 12.817 16.97 15 12 15s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.285 8.285 0 001.897 1.384C6.809 12.164 9.315 12.75 12 12.75z\" /><path d=\"M12 16.5c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 001.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 001.897 1.384C6.809 15.914 9.315 16.5 12 16.5z\" /><path d=\"M12 20.25c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 001.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 001.897 1.384C6.809 19.664 9.315 20.25 12 20.25z\" /></svg>" },
+              { title: "Fahrzeughistorie", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M7.502 6h7.128A3.375 3.375 0 0118 9.375v9.375a3 3 0 003-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 00-.673-.05A3 3 0 0015 1.5h-1.5a3 3 0 00-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6zM13.5 3A1.5 1.5 0 0012 4.5h4.5A1.5 1.5 0 0015 3h-1.5z\" clip-rule=\"evenodd\" /><path fill-rule=\"evenodd\" d=\"M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625V9.375zM6 12a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V12zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 15a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V15zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 18a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V18zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75z\" clip-rule=\"evenodd\" /></svg>" },
+              { title: "Technische Daten", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"> <path fill-rule=\"evenodd\" d=\"M12 6.75a5.25 5.25 0 016.775-5.025.75.75 0 01.313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 011.248.313 5.25 5.25 0 01-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 112.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0112 6.75zM4.117 19.125a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008z\" clip-rule=\"evenodd\" /> </svg>" },
+              { title: "Energieverbrauch", show: true, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z\" clip-rule=\"evenodd\" /></svg>" },
+              { title: "Ausstattung", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z\" clip-rule=\"evenodd\" /></svg>" },
+              { title: "Farbe und Innenausstattung", show: true, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M20.599 1.5c-.376 0-.743.111-1.055.32l-5.08 3.385a18.747 18.747 0 00-3.471 2.987 10.04 10.04 0 014.815 4.815 18.748 18.748 0 002.987-3.472l3.386-5.079A1.902 1.902 0 0020.599 1.5zm-8.3 14.025a18.76 18.76 0 001.896-1.207 8.026 8.026 0 00-4.513-4.513A18.75 18.75 0 008.475 11.7l-.278.5a5.26 5.26 0 013.601 3.602l.502-.278zM6.75 13.5A3.75 3.75 0 003 17.25a1.5 1.5 0 01-1.601 1.497.75.75 0 00-.7 1.123 5.25 5.25 0 009.8-2.62 3.75 3.75 0 00-3.75-3.75z\" clip-rule=\"evenodd\" /></svg>" },
+              { title: "Fahrzeugbeschreibung", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path d=\"M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z\" /></svg>" },
+              { title: "Preisbewertung", show: false, icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-6 h-6\"><path d=\"M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z\" /><path fill-rule=\"evenodd\" d=\"M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z\" clip-rule=\"evenodd\" /><path d=\"M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z\" /></svg>" },
+          ],
+          showLoading: false,
         };
     },
     props: ["carId"],
     emits: [],
+    setup() {
+      // this.car = this.$store.state.carsObject[this.carId][0];
+    },
     created() {
         // console.log(this.$store.state.carsObject)
-        this.car = this.$store.state.carsObject[this.carId][0];
+        // this.car = this.$store.state.carsObject[this.carId][0];
         // const getImages = async () => {
         //   try {
         //     const res = await CarService.getDetailCars(this.carId);
@@ -273,116 +279,120 @@ let product = {
         //   }
         // };
         // getImages();
+        this.showLoading = true;
         CarService.getDetailCars(this.carId)
-            .then((response) => {
-            console.log("1", response);
-            let outList = [];
-            response.data.Cars[0].Images.forEach(i => {
-                let innerMap = {};
-                innerMap["imageSrc"] = i;
-                outList.push(innerMap);
-            });
-            this.car["images"] = outList;
+        .then((response) => {
+            this.car = response;
+            this.showLoading = false;
+          // let outList = [];
+          // response.data.Cars[0].Images.forEach(i => {
+          //     let innerMap = {};
+          //     innerMap["imageSrc"] = i;
+          //     outList.push(innerMap);
+          // });
+          // this.car["images"] = outList;
         })
-            .catch((error) => {
-            console.log(error);
+        .catch((error) => {
+          console.log(error);
         });
-        let content = [
-            [
-                {
-                    title: "Karosserieform",
-                    value: this.car.BodyType
-                },
-                {
-                    title: "Zustand",
-                    value: this.car.CarType
-                },
-                {
-                    title: "Antriebsart",
-                    value: this.car.DrivetrainName
-                },
-                {
-                    title: "Sitzplätze",
-                    value: this.car.Seats
-                },
-                {
-                    title: "Türen",
-                    value: this.car.Doors
-                },
-                {
-                    title: "Garantie",
-                    value: "Known"
-                },
-            ],
-            [
-                {
-                    title: "Kilometerstand",
-                    value: this.car.Mileage + " km"
-                },
-                {
-                    title: "Erstzulassung",
-                    value: this.dateDivider(this.car.FirstRegistrationDate)
-                },
-                {
-                    title: "Pickerl bis",
-                    value: this.dateDivider(this.car.NextInspectionDate)
-                },
-                {
-                    title: "Scheckheftgepflegt",
-                    value: this.car.ServicebookAvailable
-                },
-            ],
-            [
-                {
-                    title: "Leistung",
-                    value: this.car.HorsePowerKW + " kW"
-                },
-                {
-                    title: "Getriebe",
-                    value: this.car.GearType
-                },
-                {
-                    title: "Gänge",
-                    value: "Known"
-                },
-            ],
-            [
-                {
-                    title: "Kraftstoff",
-                    value: this.car.FuelType
-                },
-                {
-                    title: "Kraftstoffverbrauch",
-                    value: this.car.AvgerageConsumption + " 1/100 km(komb.)"
-                },
-            ],
-            [],
-            [
-                {
-                    title: "Außenfarbe",
-                    value: this.car.CarColor
-                },
-                {
-                    title: "Farbe der Innenausstattung",
-                    value: this.car.InteriorColor
-                },
-                {
-                    title: "Innenausstattung",
-                    value: this.car.Upholstery
-                },
-            ],
-            [
-                {
-                    title: "description",
-                    value: this.car.Notes
-                },
-            ],
-            [],
-        ];
-        console.log("2", this.mainTitle);
-        this.mainTitle.forEach((el, i) => {
-            el["content"] = content[i];
-        });
+    },
+    beforeMount () {
+      let content = [
+        [
+            {
+                title: "Karosserieform",
+                value: this.car.BodyType
+            },
+            {
+                title: "Zustand",
+                value: this.car.CarType
+            },
+            {
+                title: "Antriebsart",
+                value: this.car.DrivetrainName
+            },
+            {
+                title: "Sitzplätze",
+                value: this.car.Seats
+            },
+            {
+                title: "Türen",
+                value: this.car.Doors
+            },
+            {
+                title: "Garantie",
+                value: "Known"
+            },
+        ],
+        [
+            {
+                title: "Kilometerstand",
+                value: this.car.Mileage + " km"
+            },
+            {
+                title: "Erstzulassung",
+                value: this.dateDivider(this.car.FirstRegistrationDate)
+            },
+            {
+                title: "Pickerl bis",
+                value: this.dateDivider(this.car.NextInspectionDate)
+            },
+            {
+                title: "Scheckheftgepflegt",
+                value: this.car.ServicebookAvailable
+            },
+        ],
+        [
+            {
+                title: "Leistung",
+                value: this.car.HorsePowerKW + " kW"
+            },
+            {
+                title: "Getriebe",
+                value: this.car.GearType
+            },
+            {
+                title: "Gänge",
+                value: "Known"
+            },
+        ],
+        [
+            {
+                title: "Kraftstoff",
+                value: this.car.FuelType
+            },
+            {
+                title: "Kraftstoffverbrauch",
+                value: this.car.AvgerageConsumption + " 1/100 km(komb.)"
+            },
+        ],
+        [],
+        [
+            {
+                title: "Außenfarbe",
+                value: this.car.CarColor
+            },
+            {
+                title: "Farbe der Innenausstattung",
+                value: this.car.InteriorColor
+            },
+            {
+                title: "Innenausstattung",
+                value: this.car.Upholstery
+            },
+        ],
+        [
+            {
+                title: "description",
+                value: this.car.Notes
+            },
+        ],
+        [],
+      ];
+      console.log("2", this.mainTitle);
+      this.mainTitle.forEach((el, i) => {
+          el["content"] = content[i];
+      });
     },
     methods: {
         changeSlide(index) {
@@ -394,12 +404,12 @@ let product = {
             }
         },
         priceShowing(price) {
-            let price_st = price.toString();
-            let newPrice = price_st.slice(0, -3) + "." + price_st.slice(-3);
+            let price_st = price?.toString();
+            let newPrice = price_st ? price_st?.slice(0, -3) + "." + price_st?.slice(-3) : '';
             return newPrice;
         },
         dateDivider(date) {
-            let newDate = date.slice(3);
+            let newDate = date ? date.slice(3): '';
             return newDate;
         },
         closeModal() {

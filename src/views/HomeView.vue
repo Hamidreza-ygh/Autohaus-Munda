@@ -4,7 +4,7 @@
       <div class="flex flex-col lg:ml-36 lg:py-8 md:basis-1/3 gap-y-8 px-4">
         <h1 class="">Ihr kompetenter Partner!</h1>
         <h2>Suchen Sie einen geprüften Gebrauchtwagen zu einem fairen Preis?</h2>
-        <p class="hidden xl:block flex-none text-primary">
+        <p class="hidden flex-none text-primary">
           Dann sind Sie bei Autohaus M&A richtig.
           Ihr zuverlässiger und kompetenter Partner!
           Wir sind spezialisiert auf den Ankauf von Fahrzeugen aller Art und Modelle. Wir bieten Ihnen umfangreiche Serviceleistungen sowie einen fairen Preis und eine kostenlose Bewertung für Ihr Fahrzeug an.
@@ -14,24 +14,28 @@
   </div>
   <Loading v-if="showLoading"></Loading>
   <div class="pageLayout">
-    <div class="mx-auto max-w-2xl py-10 px-4 sm:py-18 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="py-10 sm:py-18 flex flex-col md:flex-row gap-8">
+      <div class="basis-1/4">
+        <FilterForm :cars="cars" @filtered-data="filtering" ></FilterForm>
+      </div>
       <!-- <h2 class="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2> -->
       <!-- <SlideComponentVue :data="slideData" class="mb-20"></SlideComponentVue> -->
       <!-- <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-1 sm:px-10 lg:grid-cols-1 lg:px-20 xl:gap-x-8">
         <SlideComponentVue :data="cars" class="mb-20"></SlideComponentVue>
       </div> -->
-      <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-        <CardComponent :data="pageOfItems"></CardComponent>
+      <div class="basis-3/4 mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
+        <CardComponent :data="floatCarsData.length != 0  ? floatCarsData : pageOfItems"></CardComponent>
       </div>
       <!-- <div class="grid grid-cols-1 py-10 gap-x-6 sm:grid-cols-1 sm:px-10 sm:py-10 lg:grid-cols-1 lg:px-20 lg:py-10 xl:gap-x-8">
         
       </div> -->
     </div>
-    <PaginationComponent class="" v-if="cars" :pageSize="12" :items="cars" @changePage="onChangePage"></PaginationComponent>
+    <PaginationComponent class="" v-if="cars" :pageSize="12" :key="paginationKey" :items="floatCarsData.length != 0 ? floatCarsData : cars" @changePage="onChangePage"></PaginationComponent>
   </div>
 </template>
 
 <script setup>
+
 // import img1 from '/Users/hamidreza/Projects/Munda-Vue-static/munda/src/assets/download.jpeg'
 // const products = [
 //   {
@@ -55,6 +59,7 @@
   import CardComponent from '@/components/CardComponent.vue';
   import { mapState } from 'vuex';
   import Loading from "@/components/LoadingComponent.vue";
+  import FilterForm from '@/components/FilterFormComponent.vue'
   import CarService from '@/services/CarService';
   export default {
     name: "HomePage",
@@ -65,6 +70,8 @@
           pageOfItems: [],
           slideData: null,
           showLoading: false,
+          floatCarsData: [],
+          paginationKey: 0,
         };
     },
     created() {
@@ -89,6 +96,10 @@
         .catch((error) => {
           console.log(error);
         });
+        // console.log('cars', this.$store.state.cars);
+        // let Forum = {Make: 'BMW'};
+        // console.log('filter', this.$store.state.cars.filter( (el)=> el.Make===Forum.Make));
+        // this.cars = this.$store.state.cars.filter( el=> el.Make==='BMW');
     },
     beforeUpdate () {
       this.slideData = this.cars.map(value => value.Image1[0]);
@@ -98,6 +109,10 @@
         // update page of items
         this.pageOfItems = pageOfItems;
       },
+      filtering (e) {
+        this.floatCarsData = e;
+        this.paginationKey += 1;
+      }
       // inlineBgImage() {
       //     // let bgImage = require('@/assets/header-img.png');
       //     return `backgroundImage: url("${bgImage}")`;
