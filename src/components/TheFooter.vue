@@ -19,7 +19,7 @@
       <div class="basis-1/3 gap-2 flex flex-col justify-start my-4">
         <div class="flex flex-row gap-2 items-center mb-4 justify-center md:justify-start">
           <img class="w-5 h-5" src="../assets/contact-book.png" />
-          <p class="font-bold text-black text-xl"> Autohaus Munda</p>
+          <p class="font-bold text-black text-xl"> Autohaus M&A e.U.</p>
         </div>
         <div class="flex justify-center md:justify-start text-center md:text-start">
           <p class="">Biberhaufenweg 19A,<br />1220 Wien</p>

@@ -38,7 +38,7 @@ import emailjs from '@emailjs/browser';
 // import VueRecaptcha from 'vue-recaptcha';
 export default {
     name: "KontaktFormComponent",
-    props: [],
+    props: ['initialMessage'],
     created() {
       setTimeout(() => {
           window.grecaptcha.render('recaptcha-main'); // 'recaptcha-main' is the id that was assigned to the widget
@@ -51,7 +51,7 @@ export default {
           name: "nameRequired",
           phoneNumber: {phoneNumber: /^[0-9]+$/},
         },
-        initialMessage: 'Guten Tag,\n\nich interessiere mich für Ihr Fahrzeug. Kontaktieren Sie mich bitte.\n\nMit freundlichen Grüßen',
+        // initialMessage: 'Guten Tag,\n\nich interessiere mich für Ihr Fahrzeug. Kontaktieren Sie mich bitte.\n\nMit freundlichen Grüßen',
         showAlert: false,
         alertSuccess:false,
         alertMessage: 'Ihre Nachricht wurde erfolgreich gesendet.',
