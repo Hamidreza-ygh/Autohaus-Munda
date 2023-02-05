@@ -220,10 +220,10 @@ export default {
               filteredData = this.formData[key] !== 'Alle' ? this.$store.state.cars.filter( (el)=> el[this.filterKeys[index]] <= this.formData[key]): filteredData;
             break
             case 'minAge':
-              filteredData = this.formData[key] !== 'Alle' ? this.$store.state.cars.filter( (el)=> el[this.filterKeys[index]] >= this.formData[key]): filteredData;
+              filteredData = this.formData[key] !== 'Alle' ? this.$store.state.cars.filter( (el)=> this.dateDivider(el[this.filterKeys[index]]) >= this.formData[key]): filteredData;
             break
             case 'maxAge':
-              filteredData = this.formData[key] !== 'Alle' ? this.$store.state.cars.filter( (el)=> el[this.filterKeys[index]] <= this.formData[key]): filteredData;
+              filteredData = this.formData[key] !== 'Alle' ? this.$store.state.cars.filter( (el)=> this.dateDivider(el[this.filterKeys[index]]) <= this.formData[key]): filteredData;
             break
             case 'minPrice':
               filteredData = this.formData[key] !== 'Alle' ? this.$store.state.cars.filter( (el)=> el[this.filterKeys[index]] >= this.formData[key]): filteredData;
@@ -239,6 +239,10 @@ export default {
         this.$emit('filteredData', filteredData);
 
       },
+      dateDivider(date){
+        let newDate = date.slice(6);
+        return Number(newDate);
+      }
       
       
     },

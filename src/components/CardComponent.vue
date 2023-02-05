@@ -37,36 +37,54 @@
         </div>
       </div>
       <div class="flex flex-col justify-start mt-4">
-        <div class="grid grid-cols-2 gap-y-4 gap-x-20 sm:gap-x-4 md:gap-x-4 text-sm text-gray-500 dark:text-small-dark">
-          <div class="info_container">
-            <img v-if="darkMode" src="../assets/gearshift-dark.png" width="20">
-            <img v-else src="../assets/gearshift.png" width="20">
-            <p class="mt-1">{{ item.GearType }}</p>
+        <div class="grid grid-cols-2 gap-y-4 gap-x-20 sm:gap-x-4 md:gap-x-4 text-sm dark:text-small-dark">
+          <div class="flex flex-col">
+            <div class="info_container">
+              <img v-if="darkMode" src="../assets/gearshift-dark.png" width="20">
+              <img v-else src="../assets/gearshift.png" width="20">
+              <p class="mt-1 text-gray-500">Getriebe</p>
+            </div>
+            <p class="mt-1 ml-[26px]">{{ item.GearType }}</p>
           </div>
-          <div class="info_container">
-            <img v-if="darkMode" src="../assets/speedometer-dark.png" width="20">
-            <img v-else src="../assets/speedometer.png" width="20">
-            <p class="mt-1">{{ psConverter(item.HorsePowerKW )}} PS({{ item.HorsePowerKW }}kW)</p>
+          <div class="flex flex-col">
+            <div class="info_container">
+              <img v-if="darkMode" src="../assets/speedometer-dark.png" width="20">
+              <img v-else src="../assets/speedometer.png" width="20">
+              <p class="mt-1 text-gray-500">Leistung</p>
+            </div>
+            <p class="mt-1 ml-[26px]">{{ psConverter(item.HorsePowerKW )}} PS({{ item.HorsePowerKW }}kW)</p>
           </div>
-          <div class="info_container">
-            <img v-if="darkMode" src="../assets/road-dark.png" width="20">
-            <img v-else src="../assets/road.png" width="20">
-            <p class="mt-1">{{ numberDivider(item.Mileage) }} km</p>
+          <div class="flex flex-col">
+            <div class="info_container">
+              <img v-if="darkMode" src="../assets/road-dark.png" width="20">
+              <img v-else src="../assets/road.png" width="20">
+              <p class="mt-1 text-gray-500">Kilometerstand</p>
+            </div>
+            <p class="mt-1 ml-[26px]">{{ numberDivider(item.Mileage) }} km</p>
           </div>
-          <div class="info_container">
-            <img v-if="darkMode" src="../assets/gas-station-dark.png" width="20">
-            <img v-else src="../assets/gas-station.png" width="20">
-            <p class="mt-1">{{ item.FuelType }}</p>
+          <div class="flex flex-col">
+            <div class="info_container">
+              <img v-if="darkMode" src="../assets/gas-station-dark.png" width="20">
+              <img v-else src="../assets/gas-station.png" width="20">
+              <p class="mt-1 text-gray-500">Kraftstoff</p>
+            </div>
+            <p class="mt-1 ml-[26px]">{{ item.FuelType }}</p>
           </div>
-          <div class="info_container">
-            <img v-if="darkMode" src="../assets/calendar-dark.png" width="20">
-            <img v-else src="../assets/calendar.png" width="20">
-            <p class="mt-1">{{ dateDivider(item.FirstRegistrationDate) }}</p>
+          <div class="flex flex-col">
+            <div class="info_container">
+              <img v-if="darkMode" src="../assets/calendar-dark.png" width="20">
+              <img v-else src="../assets/calendar.png" width="20">
+              <p class="mt-1 text-gray-500">Erstzulassung</p>
+            </div>
+            <p class="mt-1 ml-[26px]">{{ dateDivider(item.FirstRegistrationDate) }}</p>
           </div>
-          <div class="info_container">
-            <img v-if="darkMode" src="../assets/drive-dark.png" width="20">
-            <img v-else src="../assets/drive.png" width="20">
-            <p class="mt-1">{{ dateDivider(item.NextInspectionDate) }}</p>
+          <div class="flex flex-col">
+            <div class="info_container">
+              <img v-if="darkMode" src="../assets/drive-dark.png" width="20">
+              <img v-else src="../assets/drive.png" width="20">
+              <p class="mt-1 text-gray-500">Inspektion</p>
+            </div>
+            <p class="mt-1 ml-[26px]">{{ dateDivider(item.NextInspectionDate) }}</p>
           </div>
         </div>
       </div>
