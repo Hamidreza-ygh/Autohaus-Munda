@@ -65,10 +65,10 @@ export default {
       this.startSlideTimer();
     },
     startSlideTimer(){
-      this.stopSlideTimer();
-      this.slideInterval = setInterval( () => {
-        this._next();
-      }, 5000)
+      // this.stopSlideTimer();
+      // this.slideInterval = setInterval( () => {
+      //   this._next();
+      // }, 5000)
     },
     stopSlideTimer(){
       clearInterval(this.slideInterval);

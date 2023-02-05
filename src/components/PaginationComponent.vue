@@ -27,7 +27,7 @@
             <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
           </a> -->
           <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-          <a v-for="page in pager.pages" :key="page" @click.prevent="setPage(page)" aria-current="page" class="cursor-pointer relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-400 dark:hover:bg-gray-600 hover:bg-gray-50 focus:z-20 rounded-md" :class="{'relative z-10 inline-flex items-center border dark:border-white border-sky-500 dark:bg-gray-500 bg-sky-100 px-4 py-2 text-sm font-medium dark:text-white text-sky-600 focus:z-20': pager.currentPage === page}">{{ page +1 }}</a>
+          <a v-for="(page, index) in pager.pages" :key="page" @click.prevent="setPage(page, index)" aria-current="page" class="cursor-pointer relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-400 dark:hover:bg-gray-600 hover:bg-gray-50 focus:z-20 rounded-md" :class="{'relative z-10 inline-flex items-center border dark:border-white border-sky-500 dark:bg-gray-500 bg-sky-100 px-4 py-2 text-sm font-medium dark:text-white text-sky-600 focus:z-20': pager.currentPage === page}">{{ page +1 }}</a>
           <!-- <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
           <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
           <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
@@ -83,7 +83,7 @@ export default {
     }
   },
   methods: {
-    setPage(page) {
+    setPage(page, index) {
       function paginate(itemsLenght, currentPage, pageSize) {
         let output = {};
         let n = Math.ceil(itemsLenght/pageSize)
@@ -108,8 +108,9 @@ export default {
       // emit change page event to parent component
       this.$emit('changePage', pageOfItems);
 
-      page === 0 ? window.scrollTo({ top: 0, behavior: 'smooth' }) : window.scrollTo({ top: 450, behavior: 'smooth' });
-      
+      if(index>=0) {
+        window.scrollTo({ top: 450, behavior: 'smooth' });
+      }
     },
   },
 };

@@ -48,7 +48,7 @@
         </div>
         <div class="flex flex-row gap-2 items-center my-4 justify-center md:justify-start">
           <img class="w-5 h-5" src="../assets/link.png" />
-          <p class="font-bold text-black text-xl"> Interessantes</p>
+          <p class="font-bold text-black text-xl">Sitemap</p>
         </div>
         <div class="grid grid-cols-4 gap-y-2 justify-items-center md:justify-items-start text-center md:text-left">
           <router-link v-for="item in navigation"
@@ -67,6 +67,7 @@
         </div>
       </div>
     </div>
+    <whatsapp-widget :phoneNumber="WPphoneNumber" companyName="Autohaus M&A" :messages="WPMessage" textReply="Antworten innerhalb einer Stunde"/>
   </div>
     
     <!-- <div class="md:px-24 flex gap-4 justify-around md:flex-row flex-col text-center md:text-left">
@@ -134,8 +135,7 @@
         </a>
       </div>
     </div> -->
-  
-  
+    
 </footer>
 </template>
 
@@ -143,6 +143,7 @@
 
 import Modal from '@/components/ModalComponent.vue';
 import KontaktForm from '@/components/KontaktFormComponent.vue';
+import WhatsappWidget from "@/components/WhatsAppComponents/WidgetComponent.vue";
 
 </script>
 
@@ -155,6 +156,8 @@ export default {
       resourceCol_1 : null,
       resourceCol_2 : null,
       modalShow:false,
+      WPphoneNumber:'4366488716789',
+      WPMessage:["👋 Hallo und herzlich Willkommen bei Autohaus M&A!", "Wir stehen Ihnen zu folgenden Zeiten gerne zur Verfügung: 🕘 Montag – Freitag von 9:00 bis 19:00 Uhr Samstag von 10 bis 15:00 Uhr"],
     };
   },
   methods: {

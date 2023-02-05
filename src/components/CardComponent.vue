@@ -82,7 +82,7 @@
             <div class="info_container">
               <img v-if="darkMode" src="../assets/drive-dark.png" width="20">
               <img v-else src="../assets/drive.png" width="20">
-              <p class="mt-1 text-gray-500">Inspektion</p>
+              <p class="mt-1 text-gray-500">Gutachten §57a bis</p>
             </div>
             <p class="mt-1 ml-[26px]">{{ dateDivider(item.NextInspectionDate) }}</p>
           </div>

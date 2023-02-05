@@ -235,8 +235,8 @@ export default {
               filteredData = this.formData[key] !== 'Alle' ? this.$store.state.cars.filter( (el)=> el[this.filterKeys[index]]===this.formData[key]): filteredData;
           }
         });
-        console.log()
         this.$emit('filteredData', filteredData);
+        window.scrollTo({ top: 450, behavior: 'smooth' });
 
       },
       dateDivider(date){

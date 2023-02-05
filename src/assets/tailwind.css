@@ -17,6 +17,9 @@
     h3 {
       @apply font-sans text-xl sm:text-2xl md:text-3xl dark:text-small-dark;
     }
+    a.text-primary {
+      @apply font-sans text-base font-normal dark:text-small-dark underline underline-offset-2;
+    }
     .text-primary {
         @apply font-sans text-base font-normal dark:text-small-dark;
     }
