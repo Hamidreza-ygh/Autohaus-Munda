@@ -1,6 +1,6 @@
 <template>
   <Modal @close="closeModal" :show="modalShow" :maxWidth="'4xl'">
-    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+    <div class="pageLayout mt-3 text-center sm:mt-0 sm:text-left">
         <div @click="closeModal" class="absolute right-[15px] top-[15px] cursor-pointer">
             <img src="../assets/xmark.png" class="w-[24px] h-[24px]">
         </div>

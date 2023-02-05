@@ -1,93 +1,32 @@
 <template>
-  <div class="pageLayout">
-    <!-- <div class="adventKalender-container">
-      <div class="adventKalender__col-1 adventKalender__col-2 adventKalender__item-gap_resp">
-        <div class="adventKalender__col-3 adventKalender__item-gap_resp">
-          <div class="adventKalender__item adventKalender__item_colSpan-3 adventKalender__item-gap_resp">
-            1
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-            2
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-            3
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-            4
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-2 adventKalender__item-gap_resp">
-            5
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-            6
-          </div>
-        </div>
-        <div class="adventKalender__row-3 adventKalender__item-gap_resp">
-          <div class="adventKalender__item adventKalender__item_rowSpan-2 adventKalender__item-gap_resp">
-            7
-          </div>
-          <div class="adventKalender__item adventKalender__item_rowSpan-1 adventKalender__item-gap_resp">
-            8
-          </div>
-          <div class="adventKalender__item_rowSpan-2 adventKalender__item_col-2 adventKalender__item-gap_resp">
-            <div class="adventKalender__item adventKalender__item_colSpan-2 adventKalender__item-gap_resp">
-              9
-            </div>
-            <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-              10
-            </div>
-            <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-              11
-            </div>
-          </div>
-          <div class="adventKalender__item adventKalender__item_rowSpan-1 adventKalender__item-gap_resp">
-            12
-          </div>
-        </div>
-        <div class="adventKalender__row-3 adventKalender__item-gap_resp">
-          <div class="adventKalender__item_rowSpan-2 adventKalender__item_col-2 adventKalender__item-gap_resp">
-            <div class="adventKalender__item adventKalender__item_colSpan-2 adventKalender__item-gap_resp">
-              13
-            </div>
-            <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-              14
-            </div>
-            <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-              15
-            </div>
-          </div>
-          <div class="adventKalender__item adventKalender__item_rowSpan-1 adventKalender__item-gap_resp">
-            16
-          </div>
-          <div class="adventKalender__item adventKalender__item_rowSpan-2 adventKalender__item-gap_resp">
-            7
-          </div>
-          <div class="adventKalender__item adventKalender__item_rowSpan-1 adventKalender__item-gap_resp">
-            8
-          </div>
-        </div>
-        <div class="adventKalender__col-3 adventKalender__item-gap_resp">
-          <div class="adventKalender__item adventKalender__item_colSpan-3 adventKalender__item-gap_resp">
-            1
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-            2
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-            3
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-            4
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-1 adventKalender__item-gap_resp">
-            6
-          </div>
-          <div class="adventKalender__item adventKalender__item_colSpan-2 adventKalender__item-gap_resp">
-            5
-          </div>
-        </div>
-      </div>
-    </div> -->
+  <div class="pageLayout" >
+    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-start text-gray-900 dark:text-white">Tipps</h2>
+    <div class="mb-8">
+      <h3 class="mb-4">Gebrauchtwagen Verkauf Tipps</h3>
+      <p class="text-primary">
+        Folgende Tipps sollen Ihnen helfen, einen höheren Verkaufspreis zu erzielen:
+      </p>
+    </div>
+    <div class="mb-8">
+      <ul style="margin: 0; padding: 1px 0 0px 34px; list-style-type: disc;" class="text-primary">
+        <li style="padding-bottom: 12px;">Gebrauchtwagenpreise sind beim <a class="text-primary" target="_blank" href="http://www.oeamtc.at/">ÖAMTC</a> und <a class="text-primary" target="_blank" href="http://www.arboe.at/home">ARBÖ</a> kostenlos erhältlich.</li>
+        <li style="padding-bottom: 12px;">Saubere Autos bringen mehr Geld.</li>
+        <li style="padding-bottom: 12px;">Halten Sie den Prüfbericht (Pickerl) bereit.</li>
+        <li style="padding-bottom: 12px;">Der erste Eindruck sollte stimmen: ansprechende Gegend, sauberes Auto, vernünftig fotografiert.</li>
+        <li style="padding-bottom: 12px;">Inserate im Internet sind meist kostenlos, sowie:  <a class="text-primary" target="_blank" href="http://www.willhaben.at">wilhaben.at</a>, <a class="text-primary" target="_blank" href="http://www.gebrauchtwagen.at/">gebrauchtwagen.at</a> und <a target="_blank" href="http://www.car4you.at/Gebrauchtwagen">car4you.at</a>. </li>
+        <li style="padding-bottom: 12px;">Probefahrt immer zu zweit.</li>
+        <li style="padding-bottom: 12px;">Autoübergabe immer nur gegen Bargeld.</li>
+        <li style="padding-bottom: 12px;">
+            Geldscheine bei der Bank überprüfen lassen.
+            Weitere
+            Infos unter <a class="text-primary" target="_blank" href="http://www.oenb.at/de/rund_ums_geld/euro/banknoten/fuehlensehenkippen/fuehlen_-_sehen_-_kippen.jsp">Nationalbank Seite</a>.
+        </li>
+        <li style="padding-bottom: 5px;">Versicherung nach dem Verkauf informieren.</li>
+        <li style="padding-bottom: 5px;">
+            Sie können unseren übersichtlichen <a class="text-primary" target="_blank" href="Kfz-Kaufvertrag.pdf">Musterkaufvertrag</a> gerne verwenden.
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
